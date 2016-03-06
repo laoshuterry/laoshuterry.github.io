@@ -1,0 +1,806 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="octopress, blog, seo" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="I'm Terry" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="既然我们创建了自己的博客，并且将其放到了网上，那么我们就希望能有很多人去阅读它，将博客的价值发挥出来。可是如何能让更多的人找到你的博客，如何能让搜索引擎找到你的博客，这就涉及到了SEO的问题。SEO是一个很大的学问，有很多专业的人士在从事这方面的工作，如果你使用过Wordpress或者自己当过站长，你应该知道SEO是一个很费脑袋的事情。幸好，我们拥有的只是一个小小的轻量化的博客，我们并不需要多么专">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为你的Octopress博客添加SEO设置">
+<meta property="og:url" content="http://yoursite.com/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/index.html">
+<meta property="og:site_name" content="I'm Terry">
+<meta property="og:description" content="既然我们创建了自己的博客，并且将其放到了网上，那么我们就希望能有很多人去阅读它，将博客的价值发挥出来。可是如何能让更多的人找到你的博客，如何能让搜索引擎找到你的博客，这就涉及到了SEO的问题。SEO是一个很大的学问，有很多专业的人士在从事这方面的工作，如果你使用过Wordpress或者自己当过站长，你应该知道SEO是一个很费脑袋的事情。幸好，我们拥有的只是一个小小的轻量化的博客，我们并不需要多么专">
+<meta property="og:updated_time" content="2016-03-06T13:32:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为你的Octopress博客添加SEO设置">
+<meta name="twitter:description" content="既然我们创建了自己的博客，并且将其放到了网上，那么我们就希望能有很多人去阅读它，将博客的价值发挥出来。可是如何能让更多的人找到你的博客，如何能让搜索引擎找到你的博客，这就涉及到了SEO的问题。SEO是一个很大的学问，有很多专业的人士在从事这方面的工作，如果你使用过Wordpress或者自己当过站长，你应该知道SEO是一个很费脑袋的事情。幸好，我们拥有的只是一个小小的轻量化的博客，我们并不需要多么专">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 为你的Octopress博客添加SEO设置 | I'm Terry </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1c077a09c498418f3eedb6c1304fbaa6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">I'm Terry</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Just another Coder and Designer</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                为你的Octopress博客添加SEO设置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-20T15:15:08+08:00" content="2014-08-20">
+              2014-08-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Octopress/" itemprop="url" rel="index">
+                    <span itemprop="name">Octopress</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>既然我们创建了自己的博客，并且将其放到了网上，那么我们就希望能有很多人去阅读它，将博客的价值发挥出来。可是如何能让更多的人找到你的博客，如何能让搜索引擎找到你的博客，这就涉及到了SEO的问题。SEO是一个很大的学问，有很多专业的人士在从事这方面的工作，如果你使用过Wordpress或者自己当过站长，你应该知道SEO是一个很费脑袋的事情。幸好，我们拥有的只是一个小小的轻量化的博客，我们并不需要多么专业SEO的东西，这里我们只简单的说一些基本配置。当然了，如果你有着方面的兴趣和能力，你也可以用更高深的SEO来完善你的博客。<br><a id="more"></a></p>
+<h2 id="为每篇博文增加关键字和描述"><a href="#为每篇博文增加关键字和描述" class="headerlink" title="为每篇博文增加关键字和描述"></a>为每篇博文增加关键字和描述</h2><p>在使用命令<code>rake new_post</code>时我们建立的博文开头会有一些标签，为了做到让每篇博文被搜索到的可能性更大，信息更全。我们在<strong>Rakefile</strong>中来添加一些信息。如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">open(filename, <span class="string">'w'</span>) <span class="keyword">do</span> |post|</span><br><span class="line">  post.puts <span class="string">"---"</span></span><br><span class="line">  post.puts <span class="string">"layout: post"</span></span><br><span class="line">  post.puts <span class="string">"title: \"<span class="subst">#&#123;title.gsub(<span class="regexp">/&amp;/</span>,<span class="string">'&amp;amp;'</span>)&#125;</span>\""</span></span><br><span class="line">  post.puts <span class="string">"date: <span class="subst">#&#123;Time.now.strftime(<span class="string">'%Y-%m-%d %H:%M'</span>)&#125;</span>"</span></span><br><span class="line">  post.puts <span class="string">"comments: true"</span></span><br><span class="line">  post.puts <span class="string">"categories: "</span></span><br><span class="line">  post.puts <span class="string">"keywords: "</span></span><br><span class="line">  post.puts <span class="string">"description: "</span></span><br><span class="line">  post.puts <span class="string">"---"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p>其中<em>keywords</em>和<em>description</em>就是我们后加的。以后在创建新博文的时候，开头的标签便会多了这两项。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">layout: post</span><br><span class="line">title: </span><br><span class="line">date: 2014-08-20 21:24</span><br><span class="line">comments: true</span><br><span class="line">categories: </span><br><span class="line">keywords:</span><br><span class="line">description:</span><br></pre></td></tr></table></figure></p>
+<p>这时候填入相应的内容，本博文被搜索引擎搜到的概率就会提高。</p>
+<h2 id="为你的整个博客添加关键字和描述"><a href="#为你的整个博客添加关键字和描述" class="headerlink" title="为你的整个博客添加关键字和描述"></a>为你的整个博客添加关键字和描述</h2><p>在博客配置的<code>_config.yml</code>文件中，添加关于你整个博客的<strong>keywords</strong>和<strong>description</strong>内容，提高整个博客被搜索到的概率。</p>
+<h2 id="使用统计工具"><a href="#使用统计工具" class="headerlink" title="使用统计工具"></a>使用统计工具</h2><p>你可以通过统计工具来监测你博客的访问情况。最好的两个统计工具，便是Google Analytics和百度统计了.Octopress已经初始自带了Google Analytics，你所要做的是去<a href="www.google.com/analytics/">Google Analytics网站</a>申请一个帐号，配置好你的网址，将<strong>帐号名</strong>和<strong>Trace ID</strong>填入<code>_config.yml</code>中即可。不过由于被墙的关系，一般用户使用google的服务有些困难，所以推荐使用百度统计。</p>
+<p>去<a href="http://tongji.baidu.com" target="_blank" rel="external">百度统计的网站</a>，注册帐号（都是一样的步骤～～），填入自己的 网址。这时候百度统计会产生一个脚本<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><br><span class="line">      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");</span><br><span class="line">      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F25fb42e16458b238f8da9ba05d6b9d4d' type='text/javascript'%3E%3C/script%3E"));</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>复制此脚本，将其添加到博客中的html文件中，便可使用。例如我的将其放到了<code>source/custom/_includes/after_footer.html</code>文件中，这样配置成功后，会在你博客中的每个页面的最下面产生一个百度的小图标。</p>
+<h2 id="提交博客给搜索引擎"><a href="#提交博客给搜索引擎" class="headerlink" title="提交博客给搜索引擎"></a>提交博客给搜索引擎</h2><p>博客建立好以后，需要提交给搜索引擎让其能够抓取你的网址。因为目前搜索引擎众多，所以可以使用两个方便的在线工具给提交给大多数的搜索引擎</p>
+<blockquote>
+<ul>
+<li><a href="http://urlc.cn/tool/addurl.html" target="_blank" rel="external">http://urlc.cn/tool/addurl.html</a></li>
+<li><a href="http://tool.lusongsong.com/addurl.html" target="_blank" rel="external">http://tool.lusongsong.com/addurl.html</a></li>
+</ul>
+</blockquote>
+<p>以上就是对于Octopress建立的博客所进行的简单SEO优化，正如前面所说，SEO是个很大的学问，如果想对你的博客进行进一步的优化，你需要学习其他SEO的知识了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/" rel="next" title="Octopress的后续配置">
+                <i class="fa fa-chevron-left"></i> Octopress的后续配置
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/09/2014-12-09-texde-da-jia-zu/" rel="prev" title="TeX的家族：LaTeX， pdfTeX， XeTeX， LuaTeX和ConTeXt">
+                TeX的家族：LaTeX， pdfTeX， XeTeX， LuaTeX和ConTeXt <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Y.Tian" />
+          <p class="site-author-name" itemprop="name">Y.Tian</p>
+          <p class="site-description motion-element" itemprop="description">生命不息，折腾不止</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laoshuterry" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/laoshuterry" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1146371305" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/laoshuterry" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> douban
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/laoshuterry" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> zhihu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为每篇博文增加关键字和描述"><span class="nav-number">1.</span> <span class="nav-text">为每篇博文增加关键字和描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为你的整个博客添加关键字和描述"><span class="nav-number">2.</span> <span class="nav-text">为你的整个博客添加关键字和描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用统计工具"><span class="nav-number">3.</span> <span class="nav-text">使用统计工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交博客给搜索引擎"><span class="nav-number">4.</span> <span class="nav-text">提交博客给搜索引擎</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Y.Tian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'laoshuterry';
+      var disqus_identifier = '2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/';
+      var disqus_title = '为你的Octopress博客添加SEO设置';
+      var disqus_url = 'http://yoursite.com/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>

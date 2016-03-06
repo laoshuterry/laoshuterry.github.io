@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="github, github pages. blog, octopress, seo" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="I'm Terry" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="在上一个博文中已经讲解了如何安装Octopress，但这只是一个简单的博客样式，还有许多东西需要我们慢慢来配置。由于本人对于HTML和CSS不是很熟悉，所以很多配置都是按照官方教程或者从网上直接复制粘贴运行的。到目前位置，配置出的博客还算满意。这里就将主要的配置记录一下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Octopress的后续配置">
+<meta property="og:url" content="http://yoursite.com/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/index.html">
+<meta property="og:site_name" content="I'm Terry">
+<meta property="og:description" content="在上一个博文中已经讲解了如何安装Octopress，但这只是一个简单的博客样式，还有许多东西需要我们慢慢来配置。由于本人对于HTML和CSS不是很熟悉，所以很多配置都是按照官方教程或者从网上直接复制粘贴运行的。到目前位置，配置出的博客还算满意。这里就将主要的配置记录一下">
+<meta property="og:updated_time" content="2016-03-06T13:32:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Octopress的后续配置">
+<meta name="twitter:description" content="在上一个博文中已经讲解了如何安装Octopress，但这只是一个简单的博客样式，还有许多东西需要我们慢慢来配置。由于本人对于HTML和CSS不是很熟悉，所以很多配置都是按照官方教程或者从网上直接复制粘贴运行的。到目前位置，配置出的博客还算满意。这里就将主要的配置记录一下">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Octopress的后续配置 | I'm Terry </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1c077a09c498418f3eedb6c1304fbaa6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">I'm Terry</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Just another Coder and Designer</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Octopress的后续配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-19T15:04:46+08:00" content="2014-08-19">
+              2014-08-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Octopress/" itemprop="url" rel="index">
+                    <span itemprop="name">Octopress</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在上一个博文中已经讲解了如何安装Octopress，但这只是一个简单的博客样式，还有许多东西需要我们慢慢来配置。由于本人对于HTML和CSS不是很熟悉，所以很多配置都是按照官方教程或者从网上直接复制粘贴运行的。到目前位置，配置出的博客还算满意。这里就将主要的配置记录一下<br><a id="more"></a></p>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>在写第一篇博文的时候，就涉及到了这个问题。Markdown的原生语法是不支持图片的，这里用的是<a href="http://octopress.org/docs/plugins/image-tag/" target="_blank" rel="external">官方教程</a>给出的方法，使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% img [class names] /path/to/image [width] [height] [title text [alt text]] %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>class names</code>可以使用left，right替换，以区别图片显示的方向。</p>
+<h2 id="安装Greyshade的主题"><a href="#安装Greyshade的主题" class="headerlink" title="安装Greyshade的主题"></a>安装Greyshade的主题</h2><p><strong>Greyshade</strong>是由<a href="http://github.com/shashankmehta" target="_blank" rel="external">Shashank Mehta</a>建立的一款Octopress主题，深受大家的喜欢。本人的博客也使用了此主题。但是由于其侧边栏支持的社交网站不包含中国的微薄等等，考虑到被墙的关系，因此使用起来很不方便，加上如果直接使用原生主题发现对中文字体的支持很不舒服。因此有人更改了此主题，使其更加符合中国用户的需求，添加了对微博的支持。主题地址在<a href="https://github.com/allenhsu/greyshade" target="_blank" rel="external">https://github.com/allenhsu/greyshade</a><br>接下来，用户便可按照之前文章中的命令来安装主题了。</p>
+<h2 id="定制域名"><a href="#定制域名" class="headerlink" title="定制域名"></a>定制域名</h2><p>在刚开始创建博客的时候，Github默认分配的用户名是username.github.io。当然了，你也可以将自己的用户名绑定到你的博客上</p>
+<ol>
+<li>首先在你的<code>source</code>的目录下创建CNAME文件，并在里输入你的域名<code>XXXXX.com</code></li>
+<li>在你购买的域名管理器中，创建或修改A记录，指向<strong>207.97.227.245</strong>这个地址。</li>
+<li>在你购买的域名管理器中，创建CNAME记录，将username.github.io.指向你的域名<code>www.XXXXX.com</code><br>接下来就慢慢等待吧，不同的域名管理网站对域名的解析时间不等～～</li>
+</ol>
+<h2 id="让博客中的链接在新窗口中打开"><a href="#让博客中的链接在新窗口中打开" class="headerlink" title="让博客中的链接在新窗口中打开"></a>让博客中的链接在新窗口中打开</h2><p>由于markdown不支持这一语法，如果要自己用html标签实现，又有些违背了markdown以内容为重的立意。可以通过将如下代码添加到 <code>source/_includes/custom/head.html</code>文件末尾来实现：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><br><span class="line">function addBlankTargetForLinks () &#123;</span><br><span class="line">  $('a[href^="http"]').each(function()&#123;</span><br><span class="line">      $(this).attr('target', '_blank');</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">$(document).bind('DOMNodeInserted', function(event) &#123;</span><br><span class="line">  addBlankTargetForLinks();</span><br><span class="line">&#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h2><p>404页面也是一个博客或者网站设计时必须注意的问题。我们这里为了简便配置，使用了腾讯的公益404页面。具体创建方法如下：</p>
+<ol>
+<li>在Octopress的目录下使用<code>rake new_page[&#39;404&#39;]</code>，这时在<code>source</code>目录下便会新建<code>404/index.markdown</code>文件，将<code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.qq.com/404/search_children.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</code>填入文件便可。</li>
+</ol>
+<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>Octopress貌似不支持评论功能，不过我们可以使用第三方强大的评论系统，例如国外的<a href="https://www.disqus.com/" target="_blank" rel="external">Disqus</a>。<br>首先去Disqus上注册帐号，添加你的博客，然后将添加站点的信息写入Octopress的<code>_config.yml</code>文件中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Disqus Comments</span><br><span class="line">disqus_short_name: laoshuterry</span><br><span class="line">disqus_show_comment_count: true # Disqus Comments</span><br></pre></td></tr></table></figure></p>
+<h2 id="更改导航栏"><a href="#更改导航栏" class="headerlink" title="更改导航栏"></a>更改导航栏</h2><p>文件<code>source\_includes\custom\navigation.html</code>文件中是导航栏的配置，默认安装完主题后，只有Blog和Archives两项。为了定制好自己博客的导航栏，我们需要加一些东西<br>原始导航栏如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"main-navigation"</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; root_url &#125;&#125;/"</span>&gt;</span>Blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; root_url &#125;&#125;/blog/archives"</span>&gt;</span>Archives<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>先变为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; root_url &#125;&#125;/"</span>&gt;</span>博客 | Blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; root_url &#125;&#125;/blog/archives"</span>&gt;</span>档案 | Archives<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; root_url &#125;&#125;/blog/categories"</span>&gt;</span>分类 | Categories<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; root_url &#125;&#125;/about"</span>&gt;</span>关于我 | About Me<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这时导航栏就变成了我目前博客导航栏的样子。</p>
+<h2 id="配“Read-More”"><a href="#配“Read-More”" class="headerlink" title="配“Read More”"></a>配“Read More”</h2><p>很多人都希望在自己的博客主题不要显示太多的文章内容，这时候我们可以添加<code>Read More</code>标签实现。在新创建一篇博文时，可以在你想要断开隐藏的地方加入标签<code>&lt;!--more--&gt;</code>。在<code>_config_yml</code>配置文件中，作出如下更改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">excerpt_link: &quot;阅读更多&quot;  	# &quot;Continue reading&quot; link text at the bottom of excerpted articles</span><br><span class="line">excerpt_separator: &quot;&lt;!--more--&gt;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>这样在首页显示时，不会显示出文章的全部，人们可以更快速的浏览你主页上面的其他内容。</p>
+<p>这里是对Octopress的一些配置。到目前为止，Octopress的配置可以说基本完成了，还有一个问题就是SEO的事情，这个下篇文章再说。<br>当然了，Octopress还有很多东西是学要继续深入研究的，目前还有很多东西自己不会弄，例如字体问题，侧边栏添加个性化标签，版权信息，云TAG等等。随着我对HTML和CSS的深入学习，希望这些东西慢慢都能加入进来吧。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/octopress/" rel="tag">#octopress</a>
+          
+            <a href="/tags/github/" rel="tag">#github</a>
+          
+            <a href="/tags/github-pages/" rel="tag">#github pages</a>
+          
+            <a href="/tags/blog/" rel="tag">#blog</a>
+          
+            <a href="/tags/seo/" rel="tag">#seo</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/" rel="next" title="利用Octopress和Github搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 利用Octopress和Github搭建个人博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/" rel="prev" title="为你的Octopress博客添加SEO设置">
+                为你的Octopress博客添加SEO设置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Y.Tian" />
+          <p class="site-author-name" itemprop="name">Y.Tian</p>
+          <p class="site-description motion-element" itemprop="description">生命不息，折腾不止</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laoshuterry" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/laoshuterry" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1146371305" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/laoshuterry" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> douban
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/laoshuterry" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> zhihu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入图片"><span class="nav-number">1.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Greyshade的主题"><span class="nav-number">2.</span> <span class="nav-text">安装Greyshade的主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定制域名"><span class="nav-number">3.</span> <span class="nav-text">定制域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让博客中的链接在新窗口中打开"><span class="nav-number">4.</span> <span class="nav-text">让博客中的链接在新窗口中打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#404页面"><span class="nav-number">5.</span> <span class="nav-text">404页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加评论"><span class="nav-number">6.</span> <span class="nav-text">添加评论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改导航栏"><span class="nav-number">7.</span> <span class="nav-text">更改导航栏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配“Read-More”"><span class="nav-number">8.</span> <span class="nav-text">配“Read More”</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Y.Tian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'laoshuterry';
+      var disqus_identifier = '2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/';
+      var disqus_title = 'Octopress的后续配置';
+      var disqus_url = 'http://yoursite.com/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>

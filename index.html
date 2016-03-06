@@ -226,8 +226,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/06/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2014/12/16/2014-12-16-ubuntu-9-dot-10shang-jian-li-arm-linuxjiao-cha-bian-yi-huan-jing/" itemprop="url">
+                  Ubuntu 9.10上建立ARM-Linux交叉编译环境
                 </a>
               
             
@@ -240,19 +240,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-06T18:55:26+08:00" content="2016-03-06">
-              2016-03-06
+            <time itemprop="dateCreated" datetime="2014-12-16T15:43:21+08:00" content="2014-12-16">
+              2014-12-16
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/06/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/06/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2014/12/16/2014-12-16-ubuntu-9-dot-10shang-jian-li-arm-linuxjiao-cha-bian-yi-huan-jing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/16/2014-12-16-ubuntu-9-dot-10shang-jian-li-arm-linuxjiao-cha-bian-yi-huan-jing/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -275,18 +294,721 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+          <p>这篇文章是我在2010年学习嵌入式的时候，自己动手建立交叉编译环境的一片文章。那时候获取信息没有那么丰富，也没有像现在这么多成熟的已经建立好的交叉编译环境，所以动手自己做的时候着实废了一番功夫。写完这篇文章后我就把它丢到了新浪博客上，再也没有看过它。直到最近整理博客才察觉了他的存在，现在整理一下发到目前的博客上。</p>
+<p>文章上的东西离现在的技术已经有些过时，但是其中的方法还是值得看一下的，以此来纪念一下在大学里曾经奋斗过的日子！<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/16/2014-12-16-ubuntu-9-dot-10shang-jian-li-arm-linuxjiao-cha-bian-yi-huan-jing/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/15/2014-12-15-shi-yong-wang-pan-jian-zao-gitsi-you-cang-ku/" itemprop="url">
+                  使用网盘建造Git私有仓库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-15T15:42:05+08:00" content="2014-12-15">
+              2014-12-15
+            </time>
+          </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/12/15/2014-12-15-shi-yong-wang-pan-jian-zao-gitsi-you-cang-ku/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/15/2014-12-15-shi-yong-wang-pan-jian-zao-gitsi-you-cang-ku/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>Github</strong>是个好东西，但是好东西也有缺点，那就是免费用户不能使用私有库，我们不可能将所有的代码都设为共享，毕竟有些东西我们只是为了给自己使用，那么怎样才能既使用Git来管理自己的代码版本，又能使其在备份到网络上，且是私有的。这时候我们就要靠网盘了~</p>
+<p>目前市面上的网盘可以说是各种各样，国外比较知名的有Dropbox，Google Drive，Sky Drive，国内的更是各大互联网厂商都有自己的网盘，百度云，快盘，酷盘，360网盘等等。在网盘的选择上，还是要看个人喜好，总体而言，从知名度和安全度上来讲，国外网盘有比较大的优势，切覆盖系统平台齐全，但是由于国内的网络环境，国外网盘能在国内使用的少之又少，如果不借助点工具，是基本使用不了的，这个时候只能选择国内的网盘。国内网盘本人使用的是金山快盘，原因就是容量大，且使用时间比较长， 各方面也还算满意。这里就讲一下如何利用<strong>金山快盘</strong>建立Git私有仓库。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/15/2014-12-15-shi-yong-wang-pan-jian-zao-gitsi-you-cang-ku/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/09/2014-12-09-texde-da-jia-zu/" itemprop="url">
+                  TeX的家族：LaTeX， pdfTeX， XeTeX， LuaTeX和ConTeXt
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-09T19:41:49+08:00" content="2014-12-09">
+              2014-12-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/TeX/" itemprop="url" rel="index">
+                    <span itemprop="name">TeX</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/12/09/2014-12-09-texde-da-jia-zu/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/09/2014-12-09-texde-da-jia-zu/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>最近这段时间一直在研究LaTeX，但是一直被各种各样的词汇搞到晕头转向，后来找到了两篇文章，文章中对于各种名词的解释比较到位，并从TeX的发展讲解了整个历史，其中一个作者更是绘制出了整个家族树，对于理解TeX的历史很有帮助，奈何两篇文章都是英文，这么好的文章应该分享给国内的朋友们，同时也为了回忆一下自己之前学的英语，这里翻译了其中的一篇文章，如果有错误，还望大家原谅<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/09/2014-12-09-texde-da-jia-zu/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/" itemprop="url">
+                  为你的Octopress博客添加SEO设置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-20T15:15:08+08:00" content="2014-08-20">
+              2014-08-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Octopress/" itemprop="url" rel="index">
+                    <span itemprop="name">Octopress</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>既然我们创建了自己的博客，并且将其放到了网上，那么我们就希望能有很多人去阅读它，将博客的价值发挥出来。可是如何能让更多的人找到你的博客，如何能让搜索引擎找到你的博客，这就涉及到了SEO的问题。SEO是一个很大的学问，有很多专业的人士在从事这方面的工作，如果你使用过Wordpress或者自己当过站长，你应该知道SEO是一个很费脑袋的事情。幸好，我们拥有的只是一个小小的轻量化的博客，我们并不需要多么专业SEO的东西，这里我们只简单的说一些基本配置。当然了，如果你有着方面的兴趣和能力，你也可以用更高深的SEO来完善你的博客。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/" itemprop="url">
+                  Octopress的后续配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-19T15:04:46+08:00" content="2014-08-19">
+              2014-08-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Octopress/" itemprop="url" rel="index">
+                    <span itemprop="name">Octopress</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在上一个博文中已经讲解了如何安装Octopress，但这只是一个简单的博客样式，还有许多东西需要我们慢慢来配置。由于本人对于HTML和CSS不是很熟悉，所以很多配置都是按照官方教程或者从网上直接复制粘贴运行的。到目前位置，配置出的博客还算满意。这里就将主要的配置记录一下<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/" itemprop="url">
+                  利用Octopress和Github搭建个人博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-18T17:39:49+08:00" content="2014-08-18">
+              2014-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Octopress/" itemprop="url" rel="index">
+                    <span itemprop="name">Octopress</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>很久以前在CSDN博客上看到一片文章，讲的是写博客的好处。作为一个IT行业的程序猿，写博客对自己的发展也是有很大益处的。因此写博客的想法早早就扎根自己的心里。在尝试了一些免费博客空间后，觉得还是有个独立的博客空间比较好，无奈自己写的博文还比较少，暂时没必要花钱购买空间域名去搭建一个独立博客。后来阅读了许多编程高手的博客，发现利用Github和Octopress就可以搭建一个无限流量无限空间的博客系统。阅读了很多教程之后，开始了搭建过程。 </p>
+<blockquote>
+<p>在安装Octopress的过程中，尽量查看<a href="http://octopress.org/docs/">Octopress</a>和<a href="https://pages.github.com/">Github Pages</a>官方网页上的教程，上面有对安装过程中最详尽的解释。当然了，希望你的英语能过关。我在想什么时候可以弄出一个中文版本教程。本人的安装环境是搭建在虚拟机的Linux Mint 16，如果你使用的是Mac或者Windows，可能会出现各种各样的问题，希望你能Google自己搜寻解决。（度娘不好用，Trust me!）</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/" itemprop="url">
+                  C语言历史与标准
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-18T17:38:59+08:00" content="2014-08-18">
+              2014-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>不知道在哪里看到过这样一句话，大意是如果开始一个新的学科时，最好去阅读它的发展历史，这样有助于对此学科提起兴趣，并且能够更好地理解这个学科的知识。对于<strong>C语言</strong>的学习，我认为这一点也是同样的。</p>
+<p><strong>C语言</strong>的诞生和发展过程中，有很多东西都是值得津津乐道的：贝尔实验室，这个现代信息产业的孕育地；UNIX，里程碑般的操作系统；Brian Kernighan和Dennis Ritchie，<strong>C语言</strong>之父……</p>
+<p>关于<strong>C语言</strong>的发展史，很多资料和书里都已经有详细的介绍了。我这里只是总结一下，尤其是对各种标准的产生进行一下说明，因为这关系到以后C程序编写规范和编译方面的配置。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -351,13 +1073,27 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
           
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
