@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-06T13:23:16.000Z</updated>
+  <updated>2016-03-07T07:27:21.363Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OpenGL笔记-初识OpenGL</title>
+    <link href="http://yoursite.com/2016/03/07/OpenGL%E7%AC%94%E8%AE%B0-%E5%88%9D%E8%AF%86OpenGL/"/>
+    <id>http://yoursite.com/2016/03/07/OpenGL笔记-初识OpenGL/</id>
+    <published>2016-03-07T07:22:56.000Z</published>
+    <updated>2016-03-07T07:27:21.363Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;LearnOpenGL-Notes&quot;&gt;&lt;a href=&quot;#LearnOpenGL-Notes&quot; class=&quot;headerlink&quot; title=&quot;LearnOpenGL Notes&quot;&gt;&lt;/a&gt;LearnOpenGL Notes&lt;/h1&gt;&lt;h2 id=&quot;Introduction-of-OpenGL&quot;&gt;&lt;a href=&quot;#Introduction-of-OpenGL&quot; class=&quot;headerlink&quot; title=&quot;Introduction of OpenGL&quot;&gt;&lt;/a&gt;Introduction of OpenGL&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;First of all, &lt;strong&gt;OpenGL&lt;/strong&gt; is not actually an API, but merely a &lt;strong&gt;specification&lt;/strong&gt;&lt;br&gt;developed and maintained by &lt;em&gt;Khronos Group&lt;/em&gt;. The OpenGL specification just specifies what the output  and perform.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;implementations&lt;/strong&gt; of actual OpenGL libraries are developed by &lt;strong&gt;graphics card manufacturers&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;OpenGL is  by itself a large &lt;strong&gt;state machine&lt;/strong&gt;, change the state, you can get what you want to draw.&lt;/li&gt;
+&lt;li&gt;An &lt;strong&gt;object&lt;/strong&gt; in OpenGL is a collection of options that represents a subset of OpenGL’s state.&lt;/li&gt;
+&lt;li&gt;OpenGL suggests using the &lt;strong&gt;Primitive Typesdefined by OpenGL&lt;/strong&gt;  instead of using primitive types defined by C standard grammer. This will ensure the applications work properly on multi-platforms.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;LearnOpenGL笔记&quot;&gt;&lt;a href=&quot;#LearnOpenGL笔记&quot; class=&quot;headerlink&quot; title=&quot;LearnOpenGL笔记&quot;&gt;&lt;/a&gt;LearnOpenGL笔记&lt;/h1&gt;&lt;h2 id=&quot;OpenGL介绍&quot;&gt;&lt;a href=&quot;#OpenGL介绍&quot; class=&quot;headerlink&quot; title=&quot;OpenGL介绍&quot;&gt;&lt;/a&gt;OpenGL介绍&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;首先，&lt;strong&gt;OpenGL&lt;/strong&gt;并不是一个真正意义上的API，它是由 &lt;em&gt;Khronos Group&lt;/em&gt;开发维护的一套&lt;strong&gt;技术规范&lt;/strong&gt;。规范规定了OpenGL的输出是什么样和其如何表现等&lt;/li&gt;
+&lt;li&gt;真正的API库是由各大显卡厂商开发实现的。&lt;/li&gt;
+&lt;li&gt;OpenGL本身实际上是一个巨大的&lt;strong&gt;状态机&lt;/strong&gt;，通过改变不同的状态，可以让OpenGL去画出你想要的图形&lt;/li&gt;
+&lt;li&gt;OpenGL中的一个&lt;strong&gt;对象&lt;/strong&gt;可以理解为OpenGL中某些状态的集合&lt;/li&gt;
+&lt;li&gt;OpenGL建议在使用时，尽量使用OpenGL中定义好的基础数据格式，而不是使用C标准语法中的数据格式，因为这样更有利于跨平台开发。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;LearnOpenGL-Notes&quot;&gt;&lt;a href=&quot;#LearnOpenGL-Notes&quot; class=&quot;headerlink&quot; title=&quot;LearnOpenGL Notes&quot;&gt;&lt;/a&gt;LearnOpenGL Notes&lt;/h1&gt;&lt;h2 id=&quot;Intro
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntu 9.10上建立ARM-Linux交叉编译环境</title>
@@ -236,7 +269,7 @@
     <link href="http://yoursite.com/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/"/>
     <id>http://yoursite.com/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/</id>
     <published>2014-08-20T07:15:08.000Z</published>
-    <updated>2016-03-06T13:32:45.000Z</updated>
+    <updated>2016-03-06T13:32:44.000Z</updated>
     
     <content type="html">&lt;p&gt;既然我们创建了自己的博客，并且将其放到了网上，那么我们就希望能有很多人去阅读它，将博客的价值发挥出来。可是如何能让更多的人找到你的博客，如何能让搜索引擎找到你的博客，这就涉及到了SEO的问题。SEO是一个很大的学问，有很多专业的人士在从事这方面的工作，如果你使用过Wordpress或者自己当过站长，你应该知道SEO是一个很费脑袋的事情。幸好，我们拥有的只是一个小小的轻量化的博客，我们并不需要多么专业SEO的东西，这里我们只简单的说一些基本配置。当然了，如果你有着方面的兴趣和能力，你也可以用更高深的SEO来完善你的博客。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;为每篇博文增加关键字和描述&quot;&gt;&lt;a href=&quot;#为每篇博文增加关键字和描述&quot; class=&quot;headerlink&quot; title=&quot;为每篇博文增加关键字和描述&quot;&gt;&lt;/a&gt;为每篇博文增加关键字和描述&lt;/h2&gt;&lt;p&gt;在使用命令&lt;code&gt;rake new_post&lt;/code&gt;时我们建立的博文开头会有一些标签，为了做到让每篇博文被搜索到的可能性更大，信息更全。我们在&lt;strong&gt;Rakefile&lt;/strong&gt;中来添加一些信息。如下：&lt;br&gt;&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;open(filename, &lt;span class=&quot;string&quot;&gt;&#39;w&#39;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; |post|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;---&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;layout: post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;title: \&quot;&lt;span class=&quot;subst&quot;&gt;#&amp;#123;title.gsub(&lt;span class=&quot;regexp&quot;&gt;/&amp;amp;/&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;&amp;amp;amp;&#39;&lt;/span&gt;)&amp;#125;&lt;/span&gt;\&quot;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;date: &lt;span class=&quot;subst&quot;&gt;#&amp;#123;Time.now.strftime(&lt;span class=&quot;string&quot;&gt;&#39;%Y-%m-%d %H:%M&#39;&lt;/span&gt;)&amp;#125;&lt;/span&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;comments: true&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;categories: &quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;keywords: &quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;description: &quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  post.puts &lt;span class=&quot;string&quot;&gt;&quot;---&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -394,7 +427,7 @@
     <link href="http://yoursite.com/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/"/>
     <id>http://yoursite.com/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/</id>
     <published>2014-08-18T09:38:59.000Z</published>
-    <updated>2016-03-06T13:32:39.000Z</updated>
+    <updated>2016-03-06T13:32:38.000Z</updated>
     
     <content type="html">&lt;p&gt;不知道在哪里看到过这样一句话，大意是如果开始一个新的学科时，最好去阅读它的发展历史，这样有助于对此学科提起兴趣，并且能够更好地理解这个学科的知识。对于&lt;strong&gt;C语言&lt;/strong&gt;的学习，我认为这一点也是同样的。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;C语言&lt;/strong&gt;的诞生和发展过程中，有很多东西都是值得津津乐道的：贝尔实验室，这个现代信息产业的孕育地；UNIX，里程碑般的操作系统；Brian Kernighan和Dennis Ritchie，&lt;strong&gt;C语言&lt;/strong&gt;之父……&lt;/p&gt;
