@@ -226,7 +226,137 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/07/OpenGL笔记-初识OpenGL/" itemprop="url">
+                <a class="post-title-link" href="/2016/03/07/2016-03-07-manage-package-using-stow/" itemprop="url">
+                  利用GNU stow工具管理源代码安装的程序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-07T19:13:23+08:00" content="2016-03-07">
+              2016-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/07/2016-03-07-manage-package-using-stow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/07/2016-03-07-manage-package-using-stow/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的<code>apt-get</code>或者CentOS下的<code>yum</code>。但是有时候一些程序必须由源代码编译进行安装，例如:</p>
+<ul>
+<li>安装源中的程序版本过低，而我们需要使用最新的版本；</li>
+<li>包管理器中根本不存在相应的程序，这时候我们没有其他选择；</li>
+<li>有时候可以使用提前预编译好的程序，不过也会出现兼容性的问题；</li>
+<li>有我们要定制一些程序，那么只能从源头编译做起。</li>
+</ul>
+<p>以上种种都说明从源代码编译安装程序都是日常工作中不可忽略的工作。</p>
+<p>我们都知道一般由源代码安装程序时候，如果不对<strong>configure</strong>文件做配置，编译好的程序默认安装在<code>/usr/local</code>下面。其实这种方法存在几个缺陷：</p>
+<ol>
+<li>当我们安装了很多程序时，<code>/usr/local</code>下面的子目录例如<strong>bin</strong>，<strong>lib</strong>，<strong>doc</strong>中会有一堆东西，你无法精确的分辨哪些程序是属于哪个源代码编译的，这在删除程序时就会很不方便。</li>
+<li>如果<code>/usr/local</code>中已经存在了某个程序，安装新程序时如果出现冲突，会比较难办，你无法确定究竟以那个版本为准而保证两个程序都不受影响正常运行。</li>
+</ol>
+<p>所以我一直在寻找能够对源代码安装的程序进行管理的方法。这几天在网上看到了其实GNU已经帮我们开发了这个东西，那就是<strong>GNU stow</strong>，通过这几天使用发现真的很好用，不但能管理程序，还能管理<code>/home</code>路径下的<code>.</code>隐藏配置文件。但不知道为什么网上资料貌似不是很多，所以在这里分享一下。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/07/2016-03-07-manage-package-using-stow/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/07/2016-03-07-OpenGL-note-intro/" itemprop="url">
                   OpenGL笔记-初识OpenGL
                 </a>
               
@@ -251,8 +381,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/07/OpenGL笔记-初识OpenGL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/07/OpenGL笔记-初识OpenGL/" itemprop="commentsCount"></span>
+                <a href="/2016/03/07/2016-03-07-OpenGL-note-intro/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/07/2016-03-07-OpenGL-note-intro/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1183,7 +1313,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1191,7 +1321,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1200,7 +1330,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

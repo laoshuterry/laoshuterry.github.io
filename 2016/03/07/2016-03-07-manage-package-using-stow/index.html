@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="github, github pages. blog, octopress, seo" />
+  <meta name="keywords" content="linux, gnu, stow, source, make, make install, compile, package, apt-get, yum, 管理安装, linux, 源代码" />
 
 
 
@@ -59,18 +59,28 @@
 
 
 
-<meta name="description" content="序言很久以前在CSDN博客上看到一片文章，讲的是写博客的好处。作为一个IT行业的程序猿，写博客对自己的发展也是有很大益处的。因此写博客的想法早早就扎根自己的心里。在尝试了一些免费博客空间后，觉得还是有个独立的博客空间比较好，无奈自己写的博文还比较少，暂时没必要花钱购买空间域名去搭建一个独立博客。后来阅读了许多编程高手的博客，发现利用Github和Octopress就可以搭建一个无限流量无限空间的博">
+<meta name="description" content="经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的apt-get或者CentOS下的yum。但是有时候一些程序必须由源代码编译进行安装，例如:
+
+安装源中的程序版本过低，而我们需要使用最新的版本；
+包管理器中根本不存在相应的程序，这时候我们没有其他选择；
+有时候可以使用提前预编译好的程序，不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用Octopress和Github搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/index.html">
+<meta property="og:title" content="利用GNU stow工具管理源代码安装的程序">
+<meta property="og:url" content="http://yoursite.com/2016/03/07/2016-03-07-manage-package-using-stow/index.html">
 <meta property="og:site_name" content="I'm Terry">
-<meta property="og:description" content="序言很久以前在CSDN博客上看到一片文章，讲的是写博客的好处。作为一个IT行业的程序猿，写博客对自己的发展也是有很大益处的。因此写博客的想法早早就扎根自己的心里。在尝试了一些免费博客空间后，觉得还是有个独立的博客空间比较好，无奈自己写的博文还比较少，暂时没必要花钱购买空间域名去搭建一个独立博客。后来阅读了许多编程高手的博客，发现利用Github和Octopress就可以搭建一个无限流量无限空间的博">
-<meta property="og:image" content="http://yoursite.com/assets/images/01.png">
-<meta property="og:updated_time" content="2016-03-06T13:33:12.000Z">
+<meta property="og:description" content="经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的apt-get或者CentOS下的yum。但是有时候一些程序必须由源代码编译进行安装，例如:
+
+安装源中的程序版本过低，而我们需要使用最新的版本；
+包管理器中根本不存在相应的程序，这时候我们没有其他选择；
+有时候可以使用提前预编译好的程序，不">
+<meta property="og:updated_time" content="2016-03-07T11:18:25.636Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用Octopress和Github搭建个人博客">
-<meta name="twitter:description" content="序言很久以前在CSDN博客上看到一片文章，讲的是写博客的好处。作为一个IT行业的程序猿，写博客对自己的发展也是有很大益处的。因此写博客的想法早早就扎根自己的心里。在尝试了一些免费博客空间后，觉得还是有个独立的博客空间比较好，无奈自己写的博文还比较少，暂时没必要花钱购买空间域名去搭建一个独立博客。后来阅读了许多编程高手的博客，发现利用Github和Octopress就可以搭建一个无限流量无限空间的博">
-<meta name="twitter:image" content="http://yoursite.com/assets/images/01.png">
+<meta name="twitter:title" content="利用GNU stow工具管理源代码安装的程序">
+<meta name="twitter:description" content="经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的apt-get或者CentOS下的yum。但是有时候一些程序必须由源代码编译进行安装，例如:
+
+安装源中的程序版本过低，而我们需要使用最新的版本；
+包管理器中根本不存在相应的程序，这时候我们没有其他选择；
+有时候可以使用提前预编译好的程序，不">
 
 
 
@@ -88,7 +98,7 @@
   };
 </script>
 
-  <title> 利用Octopress和Github搭建个人博客 | I'm Terry </title>
+  <title> 利用GNU stow工具管理源代码安装的程序 | I'm Terry </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -220,7 +230,7 @@
             
             
               
-                利用Octopress和Github搭建个人博客
+                利用GNU stow工具管理源代码安装的程序
               
             
           </h1>
@@ -232,8 +242,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-18T17:39:49+08:00" content="2014-08-18">
-              2014-08-18
+            <time itemprop="dateCreated" datetime="2016-03-07T19:13:23+08:00" content="2016-03-07">
+              2016-03-07
             </time>
           </span>
 
@@ -246,8 +256,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Octopress/" itemprop="url" rel="index">
-                    <span itemprop="name">Octopress</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -262,8 +272,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/" itemprop="commentsCount"></span>
+                <a href="/2016/03/07/2016-03-07-manage-package-using-stow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/07/2016-03-07-manage-package-using-stow/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -285,40 +295,54 @@
       
 
       
-        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>很久以前在CSDN博客上看到一片文章，讲的是写博客的好处。作为一个IT行业的程序猿，写博客对自己的发展也是有很大益处的。因此写博客的想法早早就扎根自己的心里。在尝试了一些免费博客空间后，觉得还是有个独立的博客空间比较好，无奈自己写的博文还比较少，暂时没必要花钱购买空间域名去搭建一个独立博客。后来阅读了许多编程高手的博客，发现利用Github和Octopress就可以搭建一个无限流量无限空间的博客系统。阅读了很多教程之后，开始了搭建过程。 </p>
-<blockquote>
-<p>在安装Octopress的过程中，尽量查看<a href="http://octopress.org/docs/" target="_blank" rel="external">Octopress</a>和<a href="https://pages.github.com/" target="_blank" rel="external">Github Pages</a>官方网页上的教程，上面有对安装过程中最详尽的解释。当然了，希望你的英语能过关。我在想什么时候可以弄出一个中文版本教程。本人的安装环境是搭建在虚拟机的Linux Mint 16，如果你使用的是Mac或者Windows，可能会出现各种各样的问题，希望你能Google自己搜寻解决。（度娘不好用，Trust me!）</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="建立Octopress目录"><a href="#建立Octopress目录" class="headerlink" title="建立Octopress目录"></a>建立Octopress目录</h2><p>这一步很简单，通过git将Octopress克隆到本地，具体执行命令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git://github.com/imathis/octopress.git octopress</span><br><span class="line">$ <span class="built_in">cd</span> octopress</span><br></pre></td></tr></table></figure></p>
-<h2 id="建立Ruby环境和安装Octopress"><a href="#建立Ruby环境和安装Octopress" class="headerlink" title="建立Ruby环境和安装Octopress"></a>建立Ruby环境和安装Octopress</h2><p>这一步是我出现问题最多的地方了，因为本人没有用过，甚至一点都不了解Ruby。只知道这是一个日本人发明的动态语言，跟Python类似。通过网上发现，很多人对Ruby的安装都有怨言，因为安装过程复杂，而且速度很慢，据说这也是为什么国内使用Ruby的人相对较少。Linux Mint 16默认安装了Ruby，通过命令<code>ruby --version</code>可以查看当前Ruby版本。</p>
-<p>按照教程上所说，只要Ruby版本好大于1.9.3就可以支持，然后执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gem install bundler</span><br><span class="line">$ bundle install</span><br></pre></td></tr></table></figure>
-<p>但是在执行<code>bundle install</code>过程中出现了各种各样的问题，其中有一个问题就是显示<code>Could not find RedCloth-4.2.9</code>，为了解决此问题。我安装了可能需要的依赖包，这些都是通过查询Google试验出来的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$sudo gem install RedCloth -v &apos;4.2.9</span><br><span class="line">$sudo apt-get install ruby1.9.1-dev</span><br></pre></td></tr></table></figure>
-<p>再次执行<code>bundle install</code>，安装顺利完成，Octopress也成功安装。</p>
-<h2 id="在Github上建立博客所需的repo"><a href="#在Github上建立博客所需的repo" class="headerlink" title="在Github上建立博客所需的repo"></a>在Github上建立博客所需的repo</h2><p>Octopress的后台其实就相当与Github上的一个仓库，只不过这个仓库里都是博客所需要的文件。<br>进入自己的Github页面，新建一个repository。</p>
-<img src="/assets/images/01.png" width="692" height="438">
-<blockquote>
-<p><strong>注意：</strong> username必须是自己Github账户的用户名</p>
-</blockquote>
-<h2 id="初始化Octopress"><a href="#初始化Octopress" class="headerlink" title="初始化Octopress"></a>初始化Octopress</h2><p>在octopress的目录下，有一个隐藏了的文件夹.themes，这里面放置了Octorpess所用到的主题模板，默认的是经典样式，如果你有新的主题模板，就将其文件夹放置到这个目录下，例如我的就是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> ~/GithubB<span class="built_in">log</span>/.themes $ ls</span><br><span class="line">4.0K drwxr-xr-x 4 rain rain 4.0K  8月 13 10:54 classic/</span><br><span class="line">4.0K drwxr-xr-x 5 rain rain 4.0K  8月 13 15:46 oscailte/</span><br><span class="line">4.0K drwxr-xr-x 5 rain rain 4.0K  8月 13 15:48 fabric/</span><br><span class="line">4.0K drwxr-xr-x 5 rain rain 4.0K  8月 13 15:55 octostrap3/</span><br></pre></td></tr></table></figure></p>
-<p>然后执行安装主题的命令<code>rake install</code>，这样就会安装默认主题。想安装第三方主题则使用<code>rake install[&#39;theme_name&#39;]</code>。这时候，主题已经安装完毕，我们开始生成博客真正需要的网页页面。</p>
-<h2 id="将Octopress提交到Github"><a href="#将Octopress提交到Github" class="headerlink" title="将Octopress提交到Github"></a>将Octopress提交到Github</h2><p>对于将Octopress提交到Github上，涉及到很多Git的操作，幸好Octopress为我们集成了这所有的操作。输入命令<code>rake setup_github_pages</code>，这时候rask需要你填入URL，我们便将建立username.githun.io仓库时产生的SSH或HTTP地址填入进去，rake会自动将需要提交的文件初始化。具体都有哪些操作请查看<a href="http://octopress.org/docs/deploying/github/" target="_blank" rel="external">官方教程</a>。</p>
-<p>接下来执行<code>rake generate</code>，这时候便产生了真正的博客页面。以后每次更新主题，创建新博文后，都要执行此命令。然后执行命令<code>rake deploy</code>将博客提交到Github上的username.github.io仓库的master分支中。大概等待10分钟左右，在浏览器中输入username.githun.io，便可以看到你的博客了！（Congritulations！）</p>
-<p>我在第一次执行这两条命令的时候，发现<strong> _deploy </strong>文件夹下没有任何东西，因此Github的repo中没有任何东西，系统也没有任何提示。后来才知道原来自己的系统没有nodejs（天晓得居然还要这个东西～）。执行下面语句<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get isntall nodejs</span><br></pre></td></tr></table></figure></p>
-<p>重新执行以上两条命令，便可以了。</p>
-<h2 id="一些注意的问题"><a href="#一些注意的问题" class="headerlink" title="一些注意的问题"></a>一些注意的问题</h2><blockquote>
+        <p>经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的<code>apt-get</code>或者CentOS下的<code>yum</code>。但是有时候一些程序必须由源代码编译进行安装，例如:</p>
 <ul>
-<li><p>我们只是将博客相关的页面提交到了repo的master上，为了保存整个octopress的配置，最好备份一下。备份后Github的reop中，master便是博客文件，source分支便是所有的配置源文件。备份命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'your message'</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>以上建立的是用户级博客系统，Github还允许为你的每个工程repo建立单独的项目页面，具体的搭建方法本人没有尝试，请产看<a href="http://octopress.org/docs/deploying/github/" target="_blank" rel="external">官方教程</a></p>
-</li>
-<li><p>以上方法绑定的是username.github.io的默认域名，Github Pages支持使用自己的域名，可惜本人没有，这里也就没有使用。</p>
-</li>
-<li><p>如果你先安装了经典主题，然后又重新安装了第三方专题，在执行备份命令的时候可能会出现<code>fatal: Not a git repository: sass/inuitcss/../../.git/modules/sass/inuitcss</code>的错误。这是由于git文件中的路径发生了改变，只需将<code>sass/inuitcss/.git</code>中的<code>gitdir</code>路径改变一下就可以了，例如我使用了第三方oscailte主题，便将路径改成<code>gitdir: ../../.themes/oscailte/.git/modules/sass/inuitcss</code>。</p>
-</li>
+<li>安装源中的程序版本过低，而我们需要使用最新的版本；</li>
+<li>包管理器中根本不存在相应的程序，这时候我们没有其他选择；</li>
+<li>有时候可以使用提前预编译好的程序，不过也会出现兼容性的问题；</li>
+<li>有我们要定制一些程序，那么只能从源头编译做起。</li>
+</ul>
+<p>以上种种都说明从源代码编译安装程序都是日常工作中不可忽略的工作。</p>
+<p>我们都知道一般由源代码安装程序时候，如果不对<strong>configure</strong>文件做配置，编译好的程序默认安装在<code>/usr/local</code>下面。其实这种方法存在几个缺陷：</p>
+<ol>
+<li>当我们安装了很多程序时，<code>/usr/local</code>下面的子目录例如<strong>bin</strong>，<strong>lib</strong>，<strong>doc</strong>中会有一堆东西，你无法精确的分辨哪些程序是属于哪个源代码编译的，这在删除程序时就会很不方便。</li>
+<li>如果<code>/usr/local</code>中已经存在了某个程序，安装新程序时如果出现冲突，会比较难办，你无法确定究竟以那个版本为准而保证两个程序都不受影响正常运行。</li>
+</ol>
+<p>所以我一直在寻找能够对源代码安装的程序进行管理的方法。这几天在网上看到了其实GNU已经帮我们开发了这个东西，那就是<strong>GNU stow</strong>，通过这几天使用发现真的很好用，不但能管理程序，还能管理<code>/home</code>路径下的<code>.</code>隐藏配置文件。但不知道为什么网上资料貌似不是很多，所以在这里分享一下。</p>
+<a id="more"></a>
+<h2 id="简单原理"><a href="#简单原理" class="headerlink" title="简单原理"></a>简单原理</h2><p>其实<code>stow</code>的原理很简单，就是将你指定的安装目录中的程序，通过建立硬连接的方式映射到系统常用程序路径例如<code>/usr/local</code>。</p>
+<p>说来也很巧，在不知道<code>stow</code>之前，我就是用类似的方式来管理我主目录下各种<code>.</code>配置文件的。例如我经常使用的<strong>.vimrc</strong>，<strong>.zshrc</strong>和<strong>.bashrc</strong>文件。先在你喜欢的地方建立一个目录例如<code>WorkConfig</code>，然后建立硬连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln    ~/.vimrc      ~/WorkConfig/vim_config</span><br><span class="line">ln    ~/.zshrc      ~/WorkConfig/zsh_config</span><br><span class="line">ln    ~/.bashrc     ~/WorkConfig/bash_config</span><br></pre></td></tr></table></figure></p>
+<p>以后我们更改其中这三个配置文件时，<code>WorkConfig</code>文件夹中对应的文件也会跟着变化。这样我们就很方便的可以管理<code>WorkConfig</code>这个文件夹，比如提交到Github<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/WorkConfig</span><br><span class="line">git init</span><br><span class="line">... ...</span><br></pre></td></tr></table></figure></p>
+<p><code>stow</code>的管理方式其实跟这类似。但不过更规范，更灵活。</p>
+<h2 id="使用stow"><a href="#使用stow" class="headerlink" title="使用stow"></a>使用stow</h2><p>先在发行版中安装<code>stow</code>，一般的包管理中都有这个程序，可以直接安装。在Ubuntu中，可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install stow</span><br></pre></td></tr></table></figure></p>
+<p>然后就可以使用了。</p>
+<p>这里以使用源代码方式来安装<strong>ruby</strong>为例。来演示<strong>stow</strong>的使用。</p>
+<h3 id="编译安装ruby"><a href="#编译安装ruby" class="headerlink" title="编译安装ruby"></a>编译安装ruby</h3><p>首先在一个你喜欢的目录中建立<code>stow</code>文件夹。我是将文件夹建在<code>/usr/local</code>下面了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user@host$ ls /usr/local</span><br><span class="line">bin  etc  games  include  lib  man  sbin  share  src  stow</span><br></pre></td></tr></table></figure></p>
+<p>同时进入<code>stow</code>文件夹下建立一个文件夹<code>ruby</code>。</p>
+<p>下面就可以正常地从源代码编译安装ruby了。</p>
+<blockquote>
+<p>其实Ubuntu的包管理中含有ruby，不过这里就出现我上面说的问题了。包管理器中的ruby版本很低，我是要安装Jekyll 3.0的版本，要求ruby必须大于2.0。不得已只能从源代码编译安装。</p>
+</blockquote>
+<p>在做编译配置时，注意选择安装路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/stow/ruby  #就是上面你建立在stow路径下的ruby目录</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
+<p>熟悉的人都知道这其实是将程序安装在自定义路径下。<br>下面查看<code>/usr/local/stow/ruby</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user@host$ ls /usr/local/stow/ </span><br><span class="line">bin  include  lib  share</span><br></pre></td></tr></table></figure></p>
+<p>这里可以看到目录结构跟<code>/usr/local</code>下面是一样的。</p>
+<h3 id="使用stow进行映射"><a href="#使用stow进行映射" class="headerlink" title="使用stow进行映射"></a>使用stow进行映射</h3><p>进入<code>/usr/local/stow/</code>目录下执行<code>sudo stow ruby</code>，stow就会将ruby下的目录以及目录下的文件以对应的方式映射到<code>/usr/local</code>下面，例如<code>ruby/bin</code>目录下存在以下文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x 1 root root     4854  3月  4 11:15 erb</span><br><span class="line">-rwxr-xr-x 1 root root      558  3月  4 11:15 gem</span><br><span class="line">-rwxr-xr-x 1 root root      202  3月  4 11:15 irb</span><br><span class="line">-rwxr-xr-x 1 root root      507  3月  4 14:13 jekyll</span><br><span class="line">-rwxr-xr-x 1 root root      515  3月  4 14:09 kramdown</span><br><span class="line">-rwxr-xr-x 1 root root      507  3月  4 14:09 listen</span><br><span class="line">-rwxr-xr-x 1 root root      499  3月  4 11:15 rake</span><br><span class="line">-rwxr-xr-x 1 root root      950  3月  4 11:15 rdoc</span><br><span class="line">-rwxr-xr-x 1 root root      200  3月  4 11:15 ri</span><br><span class="line">-rwxr-xr-x 1 root root      505  3月  4 14:08 rougify</span><br><span class="line">-rwxr-xr-x 1 root root 15203908  3月  4 11:11 ruby</span><br><span class="line">-rwxr-xr-x 1 root root      519  3月  4 14:08 safe_yaml</span><br><span class="line">-rwxr-xr-x 1 root root      499  3月  4 14:09 sass</span><br><span class="line">-rwxr-xr-x 1 root root      507  3月  4 14:09 sass-convert</span><br><span class="line">-rwxr-xr-x 1 root root      499  3月  4 14:09 scss</span><br></pre></td></tr></table></figure></p>
+<p>那么执行完命令以后，<code>/usr/local/bin</code>下面就会存在上面程序的硬连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x 1 root root  460  2月  3 00:06 bundle</span><br><span class="line">-rwxr-xr-x 1 root root  461  2月  3 00:06 bundler</span><br><span class="line">lrwxrwxrwx 1 root root   20  3月  4 11:21 erb -&gt; ../stow/ruby/bin/erb</span><br><span class="line">-rwxr-xr-x 1 root root  212  3月  7 01:38 fab</span><br><span class="line">lrwxrwxrwx 1 root root   20  3月  4 11:21 gem -&gt; ../stow/ruby/bin/gem</span><br><span class="line">lrwxrwxrwx 1 root root   20  3月  4 11:21 irb -&gt; ../stow/ruby/bin/irb</span><br><span class="line">lrwxrwxrwx 1 root root   23  3月  4 14:39 jekyll -&gt; ../stow/ruby/bin/jekyll</span><br><span class="line">lrwxrwxrwx 1 root root   25  3月  4 14:39 kramdown -&gt; ../stow/ruby/bin/kramdown</span><br><span class="line">lrwxrwxrwx 1 root root   23  3月  4 14:39 listen -&gt; ../stow/ruby/bin/listen</span><br><span class="line">-rwxr-xr-x 1 root root 2774  3月  7 01:38 pnuke</span><br><span class="line">-rwxr-xr-x 1 root root 3913  3月  7 01:38 prsync</span><br><span class="line">-rwxr-xr-x 1 root root 3234  3月  7 01:38 pscp</span><br><span class="line">-rwxr-xr-x 1 root root 4026  3月  7 01:38 pslurp</span><br><span class="line">-rwxr-xr-x 1 root root 3850  3月  7 01:38 pssh</span><br><span class="line">-rwxr-xr-x 1 root root  266  3月  7 01:38 pssh-askpass</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 11:21 rake -&gt; ../stow/ruby/bin/rake</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 11:21 rdoc -&gt; ../stow/ruby/bin/rdoc</span><br><span class="line">lrwxrwxrwx 1 root root   19  3月  4 11:21 ri -&gt; ../stow/ruby/bin/ri</span><br><span class="line">lrwxrwxrwx 1 root root   24  3月  4 14:39 rougify -&gt; ../stow/ruby/bin/rougify</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 11:21 ruby -&gt; ../stow/ruby/bin/ruby</span><br><span class="line">lrwxrwxrwx 1 root root   26  3月  4 14:39 safe_yaml -&gt; ../stow/ruby/bin/safe_yaml</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 14:39 sass -&gt; ../stow/ruby/bin/sass</span><br><span class="line">lrwxrwxrwx 1 root root   29  3月  4 14:39 sass-convert -&gt; ../stow/ruby/bin/sass-convert</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 14:39 scss -&gt; ../stow/ruby/bin/scss</span><br></pre></td></tr></table></figure></p>
+<p>这样就相当于新安装的软件也存在于系统默认的环境里了。直接使用即可，很方便。</p>
+<p>当我们删除安装包时就变得简单了，首先使用<code>stow --delete ruby</code>删除<code>/usr/local</code>建好的硬连接，然后直接删除<code>stow</code>下的ruby文件夹即可。</p>
+<blockquote>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>stow默认的配置都会将硬连接建立在<code>/usr/local</code>下面，当然我们可以更改，具体更改方法可以参看stow的官方文档</li>
+<li>一旦我们要映射的路径中存在同名的文件，stow程序会报错，有利于我们来进行选择</li>
+</ul>
+</blockquote>
+<p>这就是用stow来管理由源代码编译安装的程序使用方法，正如前面所说，stow也可以用来管理<code>.</code>配置文件。这里便不说明了，可以参看官方文档或者Google。</p>
+<blockquote>
+<p><strong>参考文档</strong>：</p>
+<ul>
+<li><a href="https://www.gnu.org/software/stow/" target="_blank" rel="external">GNU Stow官方文档</a></li>
+<li><a href="http://blog.danieroux.com/2005/08/07/using-gnu-stow-to-manage-source-installs/" target="_blank" rel="external">Using GNU Stow to manage source installs</a></li>
 </ul>
 </blockquote>
 
@@ -335,15 +359,25 @@
       
         <div class="post-tags">
           
-            <a href="/tags/octopress/" rel="tag">#octopress</a>
+            <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/github/" rel="tag">#github</a>
+            <a href="/tags/gnu/" rel="tag">#gnu</a>
           
-            <a href="/tags/github-pages/" rel="tag">#github pages</a>
+            <a href="/tags/stow/" rel="tag">#stow</a>
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
+            <a href="/tags/source/" rel="tag">#source</a>
           
-            <a href="/tags/seo/" rel="tag">#seo</a>
+            <a href="/tags/make/" rel="tag">#make</a>
+          
+            <a href="/tags/make-install/" rel="tag">#make install</a>
+          
+            <a href="/tags/compile/" rel="tag">#compile</a>
+          
+            <a href="/tags/package/" rel="tag">#package</a>
+          
+            <a href="/tags/apt-get/" rel="tag">#apt-get</a>
+          
+            <a href="/tags/yum/" rel="tag">#yum</a>
           
         </div>
       
@@ -352,17 +386,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/" rel="next" title="C语言历史与标准">
-                <i class="fa fa-chevron-left"></i> C语言历史与标准
+              <a href="/2016/03/07/2016-03-07-OpenGL-note-intro/" rel="next" title="OpenGL笔记-初识OpenGL">
+                <i class="fa fa-chevron-left"></i> OpenGL笔记-初识OpenGL
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/" rel="prev" title="Octopress的后续配置">
-                Octopress的后续配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -542,7 +572,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立Octopress目录"><span class="nav-number">2.</span> <span class="nav-text">建立Octopress目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立Ruby环境和安装Octopress"><span class="nav-number">3.</span> <span class="nav-text">建立Ruby环境和安装Octopress</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Github上建立博客所需的repo"><span class="nav-number">4.</span> <span class="nav-text">在Github上建立博客所需的repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Octopress"><span class="nav-number">5.</span> <span class="nav-text">初始化Octopress</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将Octopress提交到Github"><span class="nav-number">6.</span> <span class="nav-text">将Octopress提交到Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些注意的问题"><span class="nav-number">7.</span> <span class="nav-text">一些注意的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单原理"><span class="nav-number">1.</span> <span class="nav-text">简单原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用stow"><span class="nav-number">2.</span> <span class="nav-text">使用stow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译安装ruby"><span class="nav-number">2.1.</span> <span class="nav-text">编译安装ruby</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用stow进行映射"><span class="nav-number">2.2.</span> <span class="nav-text">使用stow进行映射</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -810,9 +840,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'laoshuterry';
-      var disqus_identifier = '2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/';
-      var disqus_title = '利用Octopress和Github搭建个人博客';
-      var disqus_url = 'http://yoursite.com/2014/08/18/2014-08-18-li-yong-octopresshe-githubda-jian-ge-ren-bo-ke/';
+      var disqus_identifier = '2016/03/07/2016-03-07-manage-package-using-stow/';
+      var disqus_title = '利用GNU stow工具管理源代码安装的程序';
+      var disqus_url = 'http://yoursite.com/2016/03/07/2016-03-07-manage-package-using-stow/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
