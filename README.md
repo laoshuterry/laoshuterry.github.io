@@ -6,12 +6,14 @@
 >* [Next](http://theme-next.iissnan.com/)
 
 这里说几点在搭建时注意的事项：
+
 1. 博客框架基于Nodejs，所以要确保系统里有。在Ubuntu系统中，不要使用`apt-get`方法来获得。Ubuntu包管理库中的Nodejs版本较老，直接安装的Nodejs是不能成功搭建的。
 2. 安装**Hexo**时，请使用`sudo npm install -g hexo --no-optional`。一定要有后面的参数选项，否则后面运行hexo时会出错。
 3. 在搭建好博客后，我们可能还会要安装一些扩展，例如用`hexo-generator-sitemap`来生成**sitemap.xml**文件，或者`hexo-generator-feed`来生成**atom.xml**文件等。在安装扩展时，要使用命令`npm install hexo-generator-sitemap --save`，只有加上`--save`后面的参数，新增加的扩展才能被记录在**packages.json**文件中，从而正确的生成文件。
 4. Hexo不是直接将**Markdown**文件推送到Github Pages中，而是根据**md**文档生成相应的网页文件，然后将网页文件推送到Github上。所以为了方便跨平台使用和安全性着想，个人建议最好能够对**_posts**文件夹使用git来管理。
 
 目前博客还是有些不完善的地方，有待以后慢慢折腾，这里先记一下：
+
 1. 使用自定义LOGO和font-icon。目前还不知道怎么增加。
 2. 添加图片流扩展，使得博客中能够显示其他图片社交网站的图片流。
 
