@@ -226,6 +226,133 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/07/2016-03-07-ruby-install-tips/" itemprop="url">
+                  由源代码安装ruby时需要注意的
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-07T22:50:14+08:00" content="2016-03-07">
+              2016-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/07/2016-03-07-ruby-install-tips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/07/2016-03-07-ruby-install-tips/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>现代的Linux发行版都有自带的包管理工具，可以很方便的安装程序。但是Ubuntu包管理工具中的ruby版本太旧，导致Jekyll无法正确安装。为了使用最新的ruby，只能从源代码进行编译安装。</p>
+<p>之前的一篇文章介绍了如何使用stow管理工具来管理由源代码编译安装的程序，如果有兴趣可以查看</p>
+<blockquote>
+<ul>
+<li><a href="http://fatmouse.xyz/2016/03/07/2016-03-07-manage-package-using-stow/#more" target="_blank" rel="external">利用GNU stow工具管理源代码安装的程序</a></li>
+</ul>
+</blockquote>
+<p>这里简单说一下安装ruby是所需要注意的几点：</p>
+<ol>
+<li>安装ruby时请保证系统存在zlib库，否则会导致<code>gem install</code>报错。如果已经安装了ruby，可以不用重新编译，直接安装zlib即可。</li>
+<li>安装ruby时请保证系统存在<strong>openssl</strong>库，缺少此库会导致<code>gem install jekyll</code>报错。而且如果已经编译了ruby，要重新编译安装，这个比较蛮烦。</li>
+<li>在Ubuntu上，安装openssl所使用的命令是<br><strong><code>sudo apt-get install libssl-dev</code></strong>而非<code>sudo apt-get install opnssl</code>，后者是不起作用的。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/07/2016-03-07-manage-package-using-stow/" itemprop="url">
                   利用GNU stow工具管理源代码安装的程序
                 </a>
@@ -1313,7 +1440,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1330,7 +1457,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
