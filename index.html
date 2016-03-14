@@ -226,6 +226,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/14/2016-03-14-vps-init/" itemprop="url">
+                  VPS刚建立所需要做的操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-14T17:20:15+08:00" content="2016-03-14">
+              2016-03-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/14/2016-03-14-vps-init/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/14/2016-03-14-vps-init/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="更改ROOT密码"><a href="#更改ROOT密码" class="headerlink" title="更改ROOT密码"></a>更改ROOT密码</h2><p>使用VPS分配的root密码，以root身份登陆主机，然后执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd root</span><br></pre></td></tr></table></figure></p>
+<p>依照提示即可更改主机root密码。</p>
+<h2 id="增加管理员权限的用户"><a href="#增加管理员权限的用户" class="headerlink" title="增加管理员权限的用户"></a>增加管理员权限的用户</h2><p>直接使用root用户操作主机是非常不安全的，所以要建立其他的管理员用户。在<strong>Ubuntu</strong>中，可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser admin</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd admin</span><br></pre></td></tr></table></figure></p>
+<p>虽然两个命令都可以建立新用户，但是优先使用<code>adduser</code>而不是<code>useradd</code>。<code>adduser</code>不但会建立新用户，还会建立与<code>admin</code>同名的组，还有<strong>/home</strong>下的同名目录，而<code>useradd</code>只是简单的建立了一个用户。</p>
+<h2 id="给新增用户添加管理员权限"><a href="#给新增用户添加管理员权限" class="headerlink" title="给新增用户添加管理员权限"></a>给新增用户添加管理员权限</h2><p>新增用户后，该用户是没有管理员权限的，需要root用户为其分配。打开文件<code>/etc/sudoers</code>，找到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root ALL=(ALL) ALL</span><br></pre></td></tr></table></figure></p>
+<p>在下面新添加一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin ALL=(ALL) ALL</span><br></pre></td></tr></table></figure></p>
+<p>上面的<code>admin</code>就是新建用户名。</p>
+<h2 id="更改PS1变量"><a href="#更改PS1变量" class="headerlink" title="更改PS1变量"></a>更改PS1变量</h2><p>PS1变量控制着Linux中<strong>命令提示符</strong>的显示格式，我们可以自定义命令提示符的显示格式。</p>
+<h3 id="PS1变量中各种特殊符号所代表的意义"><a href="#PS1变量中各种特殊符号所代表的意义" class="headerlink" title="PS1变量中各种特殊符号所代表的意义"></a>PS1变量中各种特殊符号所代表的意义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\d ：代表日期，格式为weekday month date，例如：&quot;Mon Aug 1&quot;    </span><br><span class="line">\H ：完整的主机名称。例如：我的机器名称为：fc4.linux，则这个名称就是fc4.linux   </span><br><span class="line">\h ：仅取主机的第一个名字，如上例，则为fc4，.linux则被省略   </span><br><span class="line">\t ：显示时间为24小时格式，如：HH：MM：SS   </span><br><span class="line">\T ：显示时间为12小时格式   </span><br><span class="line">\A ：显示时间为24小时格式：HH：MM   </span><br><span class="line">\u ：当前用户的账号名称   </span><br><span class="line">\v ：BASH的版本信息    </span><br><span class="line">\w ：完整的工作目录名称。家目录会以 ~代替    </span><br><span class="line">\W ：利用basename取得工作目录名称，所以只会列出最后一个目录   </span><br><span class="line">\# ：下达的第几个命令    </span><br><span class="line">\$ ：提示字符，如果是root时，提示符为：# ，普通用户则为：$</span><br></pre></td></tr></table></figure>
+<h3 id="Linux中命令行颜色的配置"><a href="#Linux中命令行颜色的配置" class="headerlink" title="Linux中命令行颜色的配置"></a>Linux中命令行颜色的配置</h3><p>提示符颜色的格式为：<code>\e[字体样式;字体颜色;背景颜色m</code><br>提示符颜色结束的格式为：<code>\e[0m</code><br>字体样式，字体颜色，背景颜色三者中间使用英语半角的分号隔开，三者都是数字代码。可以使用<code>echo -e &quot;\e[44;37;5m This is the Test LINE \e[0m&quot;</code>来查看效果。</p>
+<h3 id="改变PS1变量工具"><a href="#改变PS1变量工具" class="headerlink" title="改变PS1变量工具"></a>改变PS1变量工具</h3><p>其实PS1的设置命令很繁琐，设置出一个好看实用的PS1命令会很复杂，这里提供一个网站<a href="http://bashrcgenerator.com/" target="_blank" rel="external">Bashrc Generator</a>。里面可以通过拖拽的方式组合出自己想要的格式，之后直接生成PS1变量配置。<br><img src="/uploads/bashrc.jpg"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/07/2016-03-07-ruby-install-tips/" itemprop="url">
                   由源代码安装ruby时需要注意的
                 </a>
@@ -1279,129 +1405,14 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/" itemprop="url">
-                  C语言历史与标准
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-18T17:38:59+08:00" content="2014-08-18">
-              2014-08-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>不知道在哪里看到过这样一句话，大意是如果开始一个新的学科时，最好去阅读它的发展历史，这样有助于对此学科提起兴趣，并且能够更好地理解这个学科的知识。对于<strong>C语言</strong>的学习，我认为这一点也是同样的。</p>
-<p><strong>C语言</strong>的诞生和发展过程中，有很多东西都是值得津津乐道的：贝尔实验室，这个现代信息产业的孕育地；UNIX，里程碑般的操作系统；Brian Kernighan和Dennis Ritchie，<strong>C语言</strong>之父……</p>
-<p>关于<strong>C语言</strong>的发展史，很多资料和书里都已经有详细的介绍了。我这里只是总结一下，尤其是对各种标准的产生进行一下说明，因为这关系到以后C程序编写规范和编译方面的配置。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1440,7 +1451,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1457,7 +1468,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
