@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-14T09:40:41.259Z</updated>
+  <updated>2016-05-10T03:51:19.664Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何使用find和xargs完成高效的操作</title>
+    <link href="http://yoursite.com/2016/05/09/2016-05-09-unzip-bat/"/>
+    <id>http://yoursite.com/2016/05/09/2016-05-09-unzip-bat/</id>
+    <published>2016-05-09T09:00:00.000Z</published>
+    <updated>2016-05-10T03:51:19.664Z</updated>
+    
+    <content type="html">&lt;p&gt;最近从网上下了一批PSD资源文件。文件大多以ZIP格式保存。这要是按照原先的操作方式，我肯定一个一个的打开然后解压（用的是windows平台，能累死人）。后来在windows上搭建了&lt;strong&gt;cgwin&lt;/strong&gt;环境，所以就想到用Linux的方式来完成操作，方便快捷。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;至于&lt;strong&gt;cgwin&lt;/strong&gt;的概念还有环境的搭建，这里就不介绍了，去&lt;a href=&quot;https://www.cygwin.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网&lt;/a&gt;下载安装，有问题就去Google吧。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;进入终端，来到相应的目录，最开始我想到的方式是&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ls -l *.zip | xargs unzip&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;发现不行，因为&lt;code&gt;xargs&lt;/code&gt;命令是一次性将所有的结果全部传给了unzip。这样unzip是无法正常解压的。要限制每次传给unzip的参数数量。这里使用&lt;code&gt;xargs&lt;/code&gt;的参数&lt;em&gt;&lt;code&gt;-n&lt;/code&gt;&lt;/em&gt;。其用法类似于下面：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;echo &amp;apos;1,2,3,4&amp;apos; |xargs -n1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;echo &amp;apos;1,2,3,4&amp;apos;|xargs -n2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3 4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;其实就是明确每次传给后面命令参数的数量。&lt;br&gt;那么命令改写成：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ls -l *.zip | xargs -n1 unzip&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这里又出现了一个问题，xargs是以&lt;strong&gt;空格&lt;/strong&gt;识别分辨每个结果的，如果文件名当中有空格，那么会出错。这里解决方法是放弃&lt;code&gt;ls&lt;/code&gt;命令，使用&lt;code&gt;find&lt;/code&gt;.&lt;br&gt;在&lt;code&gt;find&lt;/code&gt;命令中，有个参数&lt;code&gt;-print0&lt;/code&gt;，用&lt;code&gt;man find&lt;/code&gt;查看命令手册可以看到下面这句话&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-print0&lt;br&gt;       True;  print  the full file name on the standard ofollowed by a null character (instead of the newline character that -print uses).  This allows file names that contain neor other types of white space to be  correctly inter-preted by programs that process the find output. This corresponds to the -0 option of xargs.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;也就是说使用&lt;code&gt;-print0&lt;/code&gt;并配合xargs的&lt;code&gt;-0&lt;/code&gt;参数，可以有效的处理文件名中含有空格的情况，那么改善后的命令就是&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find . -name &amp;apos;*.zip&amp;apos; -print0 |xargs -n1 -0 unzip&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;至此便可以高效并正确的批量处理zip文件了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;其实在windows上运行cgwin速度还不是很理想。听说最近windows10已经开始支持bash了。不知道目前稳定性如何，等再过段时间可以试试。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;其实使用&lt;code&gt;find&lt;/code&gt;命令配合&lt;code&gt;xargs&lt;/code&gt;可以做的事情是在是太多了。但是有些深层册的东西还是很有意思的，可以看看我的这篇文章&lt;a href=&quot;&quot;&gt;对find，xargs，grep和管道的一些深入理解&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近从网上下了一批PSD资源文件。文件大多以ZIP格式保存。这要是按照原先的操作方式，我肯定一个一个的打开然后解压（用的是windows平台，能累死人）。后来在windows上搭建了&lt;strong&gt;cgwin&lt;/strong&gt;环境，所以就想到用Linux的方式来完成操作，方便快捷。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="command" scheme="http://yoursite.com/tags/command/"/>
+    
+      <category term="find" scheme="http://yoursite.com/tags/find/"/>
+    
+      <category term="xargs" scheme="http://yoursite.com/tags/xargs/"/>
+    
+      <category term="grep" scheme="http://yoursite.com/tags/grep/"/>
+    
+      <category term="unzip" scheme="http://yoursite.com/tags/unzip/"/>
+    
+      <category term="bat" scheme="http://yoursite.com/tags/bat/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="cgwin" scheme="http://yoursite.com/tags/cgwin/"/>
+    
+  </entry>
   
   <entry>
     <title>VPS刚建立所需要做的操作</title>
