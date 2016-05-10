@@ -226,6 +226,127 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/10/2016-05-10-find-grep-xargs-and-pipe/" itemprop="url">
+                  对find，xargs，grep和管道的一些深入理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-10T14:00:00+08:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/2016-05-10-find-grep-xargs-and-pipe/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/10/2016-05-10-find-grep-xargs-and-pipe/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本人算是一个爱深究的人，前段时间遇到了一个问题，感觉挺有意思，这两天好好的研究了一下。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>相信大家都知道在目录中搜索含有固定字符串文件的命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &apos;*.py&apos; |xargs grep test</span><br></pre></td></tr></table></figure></p>
+<p>刚开始的时候，我不熟悉<code>xargs</code>命令，所以直接使用的命令是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &apos;*.py&apos; |grep test</span><br></pre></td></tr></table></figure></p>
+<p>结果并不是自己所期望的。此命令只是找出文件名<code>*.txt</code>有<code>test</code>的情况。</p>
+<p>这里我就研究一下，究竟<code>xargs</code>做了什么，使得结果不相同。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/10/2016-05-10-find-grep-xargs-and-pipe/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/09/2016-05-09-unzip-bat/" itemprop="url">
                   如何使用find和xargs完成高效的操作
                 </a>
@@ -1285,123 +1406,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/" itemprop="url">
-                  Octopress的后续配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-19T15:04:46+08:00" content="2014-08-19">
-              2014-08-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Octopress/" itemprop="url" rel="index">
-                    <span itemprop="name">Octopress</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在上一个博文中已经讲解了如何安装Octopress，但这只是一个简单的博客样式，还有许多东西需要我们慢慢来配置。由于本人对于HTML和CSS不是很熟悉，所以很多配置都是按照官方教程或者从网上直接复制粘贴运行的。到目前位置，配置出的博客还算满意。这里就将主要的配置记录一下<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1448,7 +1452,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-10T03:51:19.664Z</updated>
+  <updated>2016-05-10T11:25:28.096Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,81 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>对find，xargs，grep和管道的一些深入理解</title>
+    <link href="http://yoursite.com/2016/05/10/2016-05-10-find-grep-xargs-and-pipe/"/>
+    <id>http://yoursite.com/2016/05/10/2016-05-10-find-grep-xargs-and-pipe/</id>
+    <published>2016-05-10T06:00:00.000Z</published>
+    <updated>2016-05-10T11:25:28.096Z</updated>
+    
+    <content type="html">&lt;p&gt;本人算是一个爱深究的人，前段时间遇到了一个问题，感觉挺有意思，这两天好好的研究了一下。&lt;/p&gt;
+&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;相信大家都知道在目录中搜索含有固定字符串文件的命令：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find . -name &amp;apos;*.py&amp;apos; |xargs grep test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;刚开始的时候，我不熟悉&lt;code&gt;xargs&lt;/code&gt;命令，所以直接使用的命令是&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find . -name &amp;apos;*.py&amp;apos; |grep test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;结果并不是自己所期望的。此命令只是找出文件名&lt;code&gt;*.txt&lt;/code&gt;有&lt;code&gt;test&lt;/code&gt;的情况。&lt;/p&gt;
+&lt;p&gt;这里我就研究一下，究竟&lt;code&gt;xargs&lt;/code&gt;做了什么，使得结果不相同。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;参数与标准输入&quot;&gt;&lt;a href=&quot;#参数与标准输入&quot; class=&quot;headerlink&quot; title=&quot;参数与标准输入&quot;&gt;&lt;/a&gt;参数与标准输入&lt;/h2&gt;&lt;p&gt;这两个词我们在Linux命令中是很常见的。但是参数和标准输入其实是有区别的。我们日常使用的很多命令，例如&lt;code&gt;ls -lah .&lt;/code&gt;中。&lt;code&gt;l&lt;/code&gt;， &lt;code&gt;a&lt;/code&gt;， &lt;code&gt;h&lt;/code&gt; ，&lt;code&gt;.&lt;/code&gt;都是命令&lt;code&gt;ls&lt;/code&gt;的参数。至于标准输入，可以说它某种&lt;em&gt;流数据&lt;/em&gt;。而通常来讲标准输入的流数据来源就是我们的终端输入。在Linux命令中，有些命令可以接收标准输入，有些是不能的。像上面的&lt;code&gt;ls&lt;/code&gt;，就是只能接收参数，不能接收标准输入。像&lt;code&gt;cat&lt;/code&gt;命令或&lt;code&gt;echo&lt;/code&gt;命令，这些是可以的。&lt;/p&gt;
+&lt;p&gt;怎么分辨一个命令可不可以接收标准输入？很简单，当你敲完命令回车后，终端会等待接收你的输入，例如当你在终端输入&lt;code&gt;cat&lt;/code&gt;后，终端会等待你输入字符，当你输入一些字符后，然后按&lt;code&gt;Ctrl-C&lt;/code&gt;发送终止符号。这时&lt;code&gt;cat&lt;/code&gt;命令接收标准输入完毕，执行命令，也就是将刚才键入的内容输出的标准输出上（屏幕）。&lt;/p&gt;
+&lt;h2 id=&quot;管道&quot;&gt;&lt;a href=&quot;#管道&quot; class=&quot;headerlink&quot; title=&quot;管道&quot;&gt;&lt;/a&gt;管道&lt;/h2&gt;&lt;p&gt;管道的作用是将前面命令的&lt;strong&gt;标准输出&lt;/strong&gt;作为后面命令的&lt;strong&gt;标准输入&lt;/strong&gt;。这里要注意，后面的命令接收的是标准输入，所以如果命令不支持接收标准输入，那么就不能直接使用管道，例如常用的&lt;code&gt;ls&lt;/code&gt;命令，只能使用参数，而不能使用标准输入，所以&lt;code&gt;[command] | ls&lt;/code&gt;是不能使用的。而命令如&lt;code&gt;echo&lt;/code&gt;或&lt;code&gt;cat&lt;/code&gt;就可以。那么肯定有方法来实现这些不能使用标准输入的命令与管道结合，这时候&lt;code&gt;xargs&lt;/code&gt;便出场了。&lt;/p&gt;
+&lt;h2 id=&quot;xargs命令&quot;&gt;&lt;a href=&quot;#xargs命令&quot; class=&quot;headerlink&quot; title=&quot;xargs命令&quot;&gt;&lt;/a&gt;xargs命令&lt;/h2&gt;&lt;p&gt;&lt;code&gt;xargs&lt;/code&gt;命令通俗来讲就是将标准输入转成各种格式化的参数，所以命令&lt;code&gt;[command 1] | xargs [command 2]&lt;/code&gt;就是将&lt;code&gt;command 1&lt;/code&gt;的标准输出结果，通过管道&lt;code&gt;|&lt;/code&gt;变成&lt;code&gt;xargs&lt;/code&gt;的标准输入，然后&lt;code&gt;xargs&lt;/code&gt;再将此标准输入变成参数，传给&lt;code&gt;[command 2]&lt;/code&gt;。这样一来，通过&lt;code&gt;xargs&lt;/code&gt;命令，我们便可以在管道后面使用那些不接收标准输入的命令了。例如&lt;code&gt;[command 1]|xargs ls&lt;/code&gt;，是不是很熟悉？&lt;/p&gt;
+&lt;h2 id=&quot;find与grep&quot;&gt;&lt;a href=&quot;#find与grep&quot; class=&quot;headerlink&quot; title=&quot;find与grep&quot;&gt;&lt;/a&gt;find与grep&lt;/h2&gt;&lt;p&gt;有了以上的知识点，到这里终于可以解答最开始的问题了。为什么命令&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find . -name &amp;apos;*.py&amp;apos; |grep test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;和&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find . -name &amp;apos;*.py&amp;apos; |xargs grep test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;的结果是不一样的了。&lt;/p&gt;
+&lt;p&gt;我们首先来查看grep手册。通过&lt;code&gt;man grep&lt;/code&gt;命令。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       grep searches the named input FILEs (or standard input if no files are named, or if a single hyphen-minus (-) is given as file name) for lines containing a match to the given PATTERN.  By default, grep prints the matching lines.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这里可以看到grep是支持标准输入的。&lt;/p&gt;
+&lt;p&gt;假设目录存在如下文件：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ls&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Altitest.py  python.py  runora.py  test.py  TransferFile.py&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;那么对于第一个命令&lt;code&gt;find . -name &amp;#39;*.py&amp;#39; |grep test&lt;/code&gt;，是将前面命令的标准输出作为标准输入传给了&lt;code&gt;grep test&lt;/code&gt;，那么&lt;code&gt;grep&lt;/code&gt;是从这些标准输入寻找&lt;code&gt;test&lt;/code&gt;字符，也就是&lt;strong&gt;文件名组成的字符流&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ find . -name &amp;apos;*.py&amp;apos; |grep test&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./Altitest.py&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./test.py&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以看到最终选择出的是这些文件名。&lt;/p&gt;
+&lt;p&gt;而对于第二个命令&lt;code&gt;find . -name &amp;#39;*.py&amp;#39; |xargs grep test&lt;/code&gt;，通过&lt;code&gt;xargs&lt;/code&gt;，&lt;code&gt;find&lt;/code&gt;得到的文件名成为了参数传给后面的&lt;code&gt;grep&lt;/code&gt;，那么这时候这些文件名就是实实在在的文件标识，&lt;code&gt;grep&lt;/code&gt;接收后会按正常的使用方式在各文件中搜寻字符串。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#find . -name &amp;apos;*.py&amp;apos; |xargs grep test&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./runora.py:testConn = cx_Oracle.connect(&amp;apos;user/passwd@tns&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./runora.py:testCursor = testConn.cursor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./runora.py:testCursor.execute(&amp;quot;select * from table&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./runora.py:rows = testCursor.fetchall()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./runora.py:testCursor.close()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./runora.py:testConn.close()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;到这里算是将&lt;code&gt;find&lt;/code&gt;，&lt;code&gt;grep&lt;/code&gt;，&lt;code&gt;xargs&lt;/code&gt;和管道的作用理解清楚了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;xargs&lt;/code&gt;还有指定参数位置的作用。假设我们要将目录下所有的&lt;code&gt;.py&lt;/code&gt;文件放到Python目录中去，可以使用命令&lt;br&gt;&lt;code&gt;find . -name &amp;#39;*.py&amp;#39; | xargs -I {} mv {} ./Python&lt;/code&gt;&lt;br&gt;参数&lt;code&gt;-I&lt;/code&gt;指定了管道前命令作为参数所应该在管道后面命令的位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我们在查看很多命令手册时，手册会说明命令的使用方法。例如&lt;br&gt;&lt;code&gt;grep [OPTIONS] PATTERN [FILE...]&lt;/code&gt;,也就是命令的最后一个位置是&lt;strong&gt;文件名[FILE]&lt;/strong&gt;。&lt;br&gt;这里要注意这个&lt;strong&gt;文件名[FILE]&lt;/strong&gt;也是&lt;strong&gt;参数&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本人算是一个爱深究的人，前段时间遇到了一个问题，感觉挺有意思，这两天好好的研究了一下。&lt;/p&gt;
+&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;相信大家都知道在目录中搜索含有固定字符串文件的命令：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find . -name &amp;apos;*.py&amp;apos; |xargs grep test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;刚开始的时候，我不熟悉&lt;code&gt;xargs&lt;/code&gt;命令，所以直接使用的命令是&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find . -name &amp;apos;*.py&amp;apos; |grep test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;结果并不是自己所期望的。此命令只是找出文件名&lt;code&gt;*.txt&lt;/code&gt;有&lt;code&gt;test&lt;/code&gt;的情况。&lt;/p&gt;
+&lt;p&gt;这里我就研究一下，究竟&lt;code&gt;xargs&lt;/code&gt;做了什么，使得结果不相同。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="command" scheme="http://yoursite.com/tags/command/"/>
+    
+      <category term="find" scheme="http://yoursite.com/tags/find/"/>
+    
+      <category term="xargs" scheme="http://yoursite.com/tags/xargs/"/>
+    
+      <category term="grep" scheme="http://yoursite.com/tags/grep/"/>
+    
+      <category term="unzip" scheme="http://yoursite.com/tags/unzip/"/>
+    
+      <category term="bat" scheme="http://yoursite.com/tags/bat/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="cgwin" scheme="http://yoursite.com/tags/cgwin/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何使用find和xargs完成高效的操作</title>
     <link href="http://yoursite.com/2016/05/09/2016-05-09-unzip-bat/"/>
     <id>http://yoursite.com/2016/05/09/2016-05-09-unzip-bat/</id>
     <published>2016-05-09T09:00:00.000Z</published>
-    <updated>2016-05-10T03:51:19.664Z</updated>
+    <updated>2016-05-10T05:40:47.455Z</updated>
     
     <content type="html">&lt;p&gt;最近从网上下了一批PSD资源文件。文件大多以ZIP格式保存。这要是按照原先的操作方式，我肯定一个一个的打开然后解压（用的是windows平台，能累死人）。后来在windows上搭建了&lt;strong&gt;cgwin&lt;/strong&gt;环境，所以就想到用Linux的方式来完成操作，方便快捷。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -39,7 +109,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;其实在windows上运行cgwin速度还不是很理想。听说最近windows10已经开始支持bash了。不知道目前稳定性如何，等再过段时间可以试试。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;其实使用&lt;code&gt;find&lt;/code&gt;命令配合&lt;code&gt;xargs&lt;/code&gt;可以做的事情是在是太多了。但是有些深层册的东西还是很有意思的，可以看看我的这篇文章&lt;a href=&quot;&quot;&gt;对find，xargs，grep和管道的一些深入理解&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;其实使用&lt;code&gt;find&lt;/code&gt;命令配合&lt;code&gt;xargs&lt;/code&gt;可以做的事情是在是太多了。但是有些深层册的东西还是很有意思的，可以看看我的这篇文章&lt;a href=&quot;2016-05-10-find-grep-xargs-and-pipe.md&quot;&gt;对find，xargs，grep和管道的一些深入理解&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
