@@ -90,7 +90,7 @@
     <link href="http://yoursite.com/2016/05/09/2016-05-09-unzip-bat/"/>
     <id>http://yoursite.com/2016/05/09/2016-05-09-unzip-bat/</id>
     <published>2016-05-09T09:00:00.000Z</published>
-    <updated>2016-05-10T05:40:47.455Z</updated>
+    <updated>2016-05-10T11:29:16.862Z</updated>
     
     <content type="html">&lt;p&gt;最近从网上下了一批PSD资源文件。文件大多以ZIP格式保存。这要是按照原先的操作方式，我肯定一个一个的打开然后解压（用的是windows平台，能累死人）。后来在windows上搭建了&lt;strong&gt;cgwin&lt;/strong&gt;环境，所以就想到用Linux的方式来完成操作，方便快捷。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -109,7 +109,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;其实在windows上运行cgwin速度还不是很理想。听说最近windows10已经开始支持bash了。不知道目前稳定性如何，等再过段时间可以试试。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;其实使用&lt;code&gt;find&lt;/code&gt;命令配合&lt;code&gt;xargs&lt;/code&gt;可以做的事情是在是太多了。但是有些深层册的东西还是很有意思的，可以看看我的这篇文章&lt;a href=&quot;2016-05-10-find-grep-xargs-and-pipe.md&quot;&gt;对find，xargs，grep和管道的一些深入理解&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;其实使用&lt;code&gt;find&lt;/code&gt;命令配合&lt;code&gt;xargs&lt;/code&gt;可以做的事情是在是太多了。但是有些深层册的东西还是很有意思的，可以看看我的这篇文章&lt;a href=&quot;http://fatmouse.xyz/2016/05/10/2016-05-10-find-grep-xargs-and-pipe/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;对find，xargs，grep和管道的一些深入理解&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
