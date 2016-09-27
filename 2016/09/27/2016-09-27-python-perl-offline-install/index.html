@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux, gnu, stow, source, make, make install, compile, package, apt-get, yum, 管理安装, linux, 源代码" />
+  <meta name="keywords" content="linux,command,python,perl,pip,cpan,offline,install,module,离线安装,自定义路径" />
 
 
 
@@ -59,28 +59,19 @@
 
 
 
-<meta name="description" content="经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的apt-get或者CentOS下的yum。但是有时候一些程序必须由源代码编译进行安装，例如:
-
-安装源中的程序版本过低，而我们需要使用最新的版本；
-包管理器中根本不存在相应的程序，这时候我们没有其他选择；
-有时候可以使用提前预编译好的程序，不">
+<meta name="description" content="Python和Perl最为强大的高级脚本语言，其中很大一个亮点就是可以实现各种扩展。这两个语言在目前网络上都有大量的扩展模块。我们可以随时使用来简化我们的工作。
+在开发过程，大家都习惯了两个语言的一些包管理工具，需要什么模块，直接一个命令就搞定了，例如Python的pip,Perl的cpan等等。但是在生产环境，或者说正式环境上。我们想安装扩展模块就没这么容易了。在现实环境中，并不像我们做开发测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用GNU stow工具管理源代码安装的程序">
-<meta property="og:url" content="http://yoursite.com/2016/03/07/2016-03-07-manage-package-using-stow/index.html">
+<meta property="og:title" content="关于在内网服务器上搭建Python和Perl环境的两个问题">
+<meta property="og:url" content="http://yoursite.com/2016/09/27/2016-09-27-python-perl-offline-install/index.html">
 <meta property="og:site_name" content="I'm Terry">
-<meta property="og:description" content="经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的apt-get或者CentOS下的yum。但是有时候一些程序必须由源代码编译进行安装，例如:
-
-安装源中的程序版本过低，而我们需要使用最新的版本；
-包管理器中根本不存在相应的程序，这时候我们没有其他选择；
-有时候可以使用提前预编译好的程序，不">
-<meta property="og:updated_time" content="2016-03-14T09:32:08.230Z">
+<meta property="og:description" content="Python和Perl最为强大的高级脚本语言，其中很大一个亮点就是可以实现各种扩展。这两个语言在目前网络上都有大量的扩展模块。我们可以随时使用来简化我们的工作。
+在开发过程，大家都习惯了两个语言的一些包管理工具，需要什么模块，直接一个命令就搞定了，例如Python的pip,Perl的cpan等等。但是在生产环境，或者说正式环境上。我们想安装扩展模块就没这么容易了。在现实环境中，并不像我们做开发测试">
+<meta property="og:updated_time" content="2016-09-27T09:50:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用GNU stow工具管理源代码安装的程序">
-<meta name="twitter:description" content="经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的apt-get或者CentOS下的yum。但是有时候一些程序必须由源代码编译进行安装，例如:
-
-安装源中的程序版本过低，而我们需要使用最新的版本；
-包管理器中根本不存在相应的程序，这时候我们没有其他选择；
-有时候可以使用提前预编译好的程序，不">
+<meta name="twitter:title" content="关于在内网服务器上搭建Python和Perl环境的两个问题">
+<meta name="twitter:description" content="Python和Perl最为强大的高级脚本语言，其中很大一个亮点就是可以实现各种扩展。这两个语言在目前网络上都有大量的扩展模块。我们可以随时使用来简化我们的工作。
+在开发过程，大家都习惯了两个语言的一些包管理工具，需要什么模块，直接一个命令就搞定了，例如Python的pip,Perl的cpan等等。但是在生产环境，或者说正式环境上。我们想安装扩展模块就没这么容易了。在现实环境中，并不像我们做开发测试">
 
 
 
@@ -98,7 +89,7 @@
   };
 </script>
 
-  <title> 利用GNU stow工具管理源代码安装的程序 | I'm Terry </title>
+  <title> 关于在内网服务器上搭建Python和Perl环境的两个问题 | I'm Terry </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +221,7 @@
             
             
               
-                利用GNU stow工具管理源代码安装的程序
+                关于在内网服务器上搭建Python和Perl环境的两个问题
               
             
           </h1>
@@ -242,8 +233,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-07T19:13:23+08:00" content="2016-03-07">
-              2016-03-07
+            <time itemprop="dateCreated" datetime="2016-09-27T17:45:00+08:00" content="2016-09-27">
+              2016-09-27
             </time>
           </span>
 
@@ -272,8 +263,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/07/2016-03-07-manage-package-using-stow/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/07/2016-03-07-manage-package-using-stow/" itemprop="commentsCount"></span>
+                <a href="/2016/09/27/2016-09-27-python-perl-offline-install/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/27/2016-09-27-python-perl-offline-install/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -295,54 +286,59 @@
       
 
       
-        <p>经常使用Linux工作的人都知道，在Linux上安装程序方法有很多，一般来说相应的Linux发行版都有自己的包管理程序，可以统一管理程序，例如Ubuntu下的<code>apt-get</code>或者CentOS下的<code>yum</code>。但是有时候一些程序必须由源代码编译进行安装，例如:</p>
-<ul>
-<li>安装源中的程序版本过低，而我们需要使用最新的版本；</li>
-<li>包管理器中根本不存在相应的程序，这时候我们没有其他选择；</li>
-<li>有时候可以使用提前预编译好的程序，不过也会出现兼容性的问题；</li>
-<li>有我们要定制一些程序，那么只能从源头编译做起。</li>
-</ul>
-<p>以上种种都说明从源代码编译安装程序都是日常工作中不可忽略的工作。</p>
-<p>我们都知道一般由源代码安装程序时候，如果不对<strong>configure</strong>文件做配置，编译好的程序默认安装在<code>/usr/local</code>下面。其实这种方法存在几个缺陷：</p>
+        <p><code>Python</code>和<code>Perl</code>最为强大的高级脚本语言，其中很大一个亮点就是可以实现各种扩展。这两个语言在目前网络上都有大量的扩展模块。我们可以随时使用来简化我们的工作。</p>
+<p>在开发过程，大家都习惯了两个语言的一些包管理工具，需要什么模块，直接一个命令就搞定了，例如Python的<code>pip</code>,Perl的<code>cpan</code>等等。但是在生产环境，或者说正式环境上。我们想安装扩展模块就没这么容易了。在现实环境中，并不像我们做开发测试那样方便通过网络安装模块，一般服务器都是内网隔离的，而且使用的用户都一定的权限设置，这就是说，你无法从网络安装模块，也不能使用系统权限将模块安装到默认路径中。这两个问题从很大程度上让我们再使用<code>pip</code>或者<code>cpan</code>这些工具不再那么方便。为了能更好地在正式环境上使用这些工具，我们需要解决两个问题。</p>
+<pre><code>1. 如何离线使用包管理工具安装扩展模块，不需要使用网络，同时完成依赖包的安装；
+2. 如何将包安装到非系统权限路径
+</code></pre><p>为了解决上面的两个问题，我们来分别介绍两个语言的解决方法。<br><a id="more"></a></p>
+<h2 id="离线使用包管理工具安装扩展模块"><a href="#离线使用包管理工具安装扩展模块" class="headerlink" title="离线使用包管理工具安装扩展模块"></a>离线使用包管理工具安装扩展模块</h2><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p><code>pip</code>，<code>virtualenv</code>和<code>fabric</code>号称<strong>Python三大神器</strong>。这里<code>pip</code>绝对不是浪得虚名，它的包管理功能是十分强大的，其中一点就是可以离线完成包的安装，包括其自动找到各种依赖包。</p>
+<p>在没有外网连接的环境上，如果想安装一些自己常用的模块，这些模块还有一大堆依赖包。这时候我们只能把所有的离线安装包都下载下来，一个个按照顺序安装。这肯定不是个好方法。<code>pip</code>轻松解决了这个问题。<br>假设我们的开发环境是联网的，而且上面的各种扩展包都是完全安装好的，我们便可以利用这一点来制作一个专属自己的扩展包集合。</p>
+<p>在有外网连接的开发环境上，执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip list </span><br><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line">pip install --download path/to/your/package/dir -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p><code>pip list</code>列出当前环境下所有安装好的扩展包，然后使用<code>pip freeze</code>将当前环境下所有的包信息写到了<code>requirements.txt</code>文件中。再以此文件为准，将所有的文件内涉及的模块，下载到自定义的目录当中。下载完成后，可以将这个路径转移到正式环境中。</p>
+<p>在正式环境上执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --no-index --find-index=path/to/your/package/dir -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>这时候<code>pip</code>便可以根据<code>requirements.txt</code>文件，从指定文件夹内获取所需要的扩展包，不需要网络就安装到了生产环境下。</p>
+<p><code>pip</code>这一功能绝对算得上是神技能，轻松解决了<code>Python</code>离线安装的问题。</p>
+<blockquote>
+<p><code>pip</code>的版本要保持最新，否则可能出现安装错误的问题。</p>
+</blockquote>
+<h3 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h3><p><code>Perl</code>在离线安装这点上显得“笨重”些，目前本人没有找到Perl上像<code>pip</code>那样，可以仅离线下载自己所需的扩展包，<code>Perl</code>目前能做的就是对<strong>CPAN</strong>做一个迷你的镜像备份。也就是把CPAN上的主要版本都DOWN下来。形成一个本地的，小巧的CPAN，这样来实现离线安装。</p>
+<p>虽然说这也是一个方法，但是下载的镜像需要占用一定的空间，有3个G之多。传输和存储多多少少都有些不方便。</p>
+<p>要实现此功能的工具叫做<code>minicpan</code>。我们现在自己的开发环境上，例如个人电脑的虚拟机上保持网络通畅，利用<code>cpan</code>或者<code>cpanm</code>先安装<code>CPAN::Mini</code>模块，然后建立一个<code>minicpan</code>所要用到的配置文件，默认为<code>~/.minicpan</code>。在里面写下如下内容</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span>: ~<span class="regexp">/LocalCPAN/minicpan</span> </span><br><span class="line">remote: http:<span class="regexp">//cpan</span>.hexten.net/</span><br></pre></td></tr></table></figure>
+<p><code>local</code>就是要下载镜像的本地路径。<code>remote</code>是CPAN的远端镜像网址，我们可以通过这个<a href="http://mirrors.cpan.org/" target="_blank" rel="external">网站</a>选择一个适合自己网络情况的地址。</p>
+<p>接下来直接执行命令<code>minicpan</code>，就开始下载迷你镜像了。慢慢等待吧~~</p>
+<p>当这个下载完成后，将<code>~/LocalCPAN/minicpan</code>移动到没有互联网连接的机器上。打开<code>cpan</code>，依次执行下列语句</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cpan[<span class="number">1</span>]&gt; o conf urllist <span class="keyword">push</span> file:<span class="regexp">//</span><span class="regexp">/home/user</span><span class="regexp">/LocalCPAN/minicpan</span></span><br><span class="line"></span><br><span class="line">cpan[<span class="number">2</span>]&gt; o conf urllist </span><br><span class="line">urllist <span class="number">0</span> [file:<span class="regexp">//</span><span class="regexp">/home/user</span><span class="regexp">/LocalCPAN/minicpan</span>] </span><br><span class="line"></span><br><span class="line">cpan[<span class="number">3</span>]&gt; o conf commit</span><br></pre></td></tr></table></figure>
+<p>这时候，<code>cpan</code>工具的默认下载源便成了本地的路径了。这时再用<code>cpan</code>安装自己所需的扩展包，就可以无须外网连接，离线完成安装了。</p>
+<blockquote>
+<p>注意下载的过程会很漫长。而且有可能因为网络原因导致程序退出。我们要在原来的基础上继续下载时，需要使用<code>minicpan -f</code>命令来继续执行。</p>
+</blockquote>
+<h2 id="将模块安装到非系统权限路径。"><a href="#将模块安装到非系统权限路径。" class="headerlink" title="将模块安装到非系统权限路径。"></a>将模块安装到非系统权限路径。</h2><h3 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h3><p>将Python的扩展包安装到非系统权限路径中其实很简单，只需在<code>pip</code>或者源代码安装<code>python setup.py install</code>命令时加上<code>--user</code>参数，那么Python会自动将模块安装到<code>~/.local</code>路径下。并将这个路径加入到Python模块的搜索列表。可以说是很方便。</p>
+<blockquote>
+<p>这种方法很省心，但是扩展包却要占用home空间。本人目前没有找到如何将扩展包安装到其他自定义的目录中，并将此目录加入搜索路径。这个以后再慢慢研究。</p>
+</blockquote>
+<h3 id="Perl-1"><a href="#Perl-1" class="headerlink" title="Perl"></a>Perl</h3><p>在源代码安装时，当用户没有系统权限，可以使用参数将模块安装到自定义的目录。如果使用的是<strong>ExtUtils::MakeMaker</strong><br>方式，使用参数<code>INSTALL_BASE=</code>。如果使用的是<strong>Module::Build</strong>，则可以使用参数<code>--install_base=</code></p>
+<blockquote>
+<p>当我们使用<code>cpan</code>安装扩展包时，通过定义cpan配置文件里这两个路径，也可以将扩展包安装到自定义的目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; cpan: o conf</span><br><span class="line">&gt; </span><br><span class="line">&gt; makepl_arg         [INSTALL_BASE=/path/to/build]</span><br><span class="line">&gt; mbuild_arg         [--install_base /path/to/build]</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>这里有个问题，我们只是将扩展包安装到了自定义的目录中，但是Perl默认的<code>@INC</code>数组中的找不到这个路径的，更不用说路径下的扩展包。这一步我们要做的就是让Perl能够找到自定义的路径，我们可以使用以下三种方法：</p>
 <ol>
-<li>当我们安装了很多程序时，<code>/usr/local</code>下面的子目录例如<strong>bin</strong>，<strong>lib</strong>，<strong>doc</strong>中会有一堆东西，你无法精确的分辨哪些程序是属于哪个源代码编译的，这在删除程序时就会很不方便。</li>
-<li>如果<code>/usr/local</code>中已经存在了某个程序，安装新程序时如果出现冲突，会比较难办，你无法确定究竟以那个版本为准而保证两个程序都不受影响正常运行。</li>
+<li>添加系统环境变量<strong><code>PERL5LIB</code></strong>，指向自定义目录，即可将自定义的路径加入到<code>@INC</code>中。</li>
+<li>在Perl源码中使用<code>usr lib &#39;path/to/perl/module&#39;</code>。</li>
+<li>在启动perl命令时，使用<code>-l</code>参数。例如<code>perl -l path/to/perl/module test.pl</code>。<strong>此方式一般用于测试新模块</strong></li>
 </ol>
-<p>所以我一直在寻找能够对源代码安装的程序进行管理的方法。这几天在网上看到了其实GNU已经帮我们开发了这个东西，那就是<strong>GNU stow</strong>，通过这几天使用发现真的很好用，不但能管理程序，还能管理<code>/home</code>路径下的<code>.</code>隐藏配置文件。但不知道为什么网上资料貌似不是很多，所以在这里分享一下。</p>
-<a id="more"></a>
-<h2 id="简单原理"><a href="#简单原理" class="headerlink" title="简单原理"></a>简单原理</h2><p>其实<code>stow</code>的原理很简单，就是将你指定的安装目录中的程序，通过建立软连接的方式映射到系统常用程序路径例如<code>/usr/local</code>。</p>
-<p>说来也很巧，在不知道<code>stow</code>之前，我就是用类似的方式来管理我主目录下各种<code>.</code>配置文件的。例如我经常使用的<strong>.vimrc</strong>，<strong>.zshrc</strong>和<strong>.bashrc</strong>文件。先在你喜欢的地方建立一个目录例如<code>WorkConfig</code>，然后建立硬连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln    ~/.vimrc      ~/WorkConfig/vim_config</span><br><span class="line">ln    ~/.zshrc      ~/WorkConfig/zsh_config</span><br><span class="line">ln    ~/.bashrc     ~/WorkConfig/bash_config</span><br></pre></td></tr></table></figure></p>
-<p>以后我们更改其中这三个配置文件时，<code>WorkConfig</code>文件夹中对应的文件也会跟着变化。这样我们就很方便的可以管理<code>WorkConfig</code>这个文件夹，比如提交到Github<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/WorkConfig</span><br><span class="line">git init</span><br><span class="line">... ...</span><br></pre></td></tr></table></figure></p>
-<p><code>stow</code>的管理方式其实跟这类似。但不过更规范，更灵活。</p>
-<h2 id="使用stow"><a href="#使用stow" class="headerlink" title="使用stow"></a>使用stow</h2><p>先在发行版中安装<code>stow</code>，一般的包管理中都有这个程序，可以直接安装。在Ubuntu中，可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install stow</span><br></pre></td></tr></table></figure></p>
-<p>然后就可以使用了。</p>
-<p>这里以使用源代码方式来安装<strong>ruby</strong>为例。来演示<strong>stow</strong>的使用。</p>
-<h3 id="编译安装ruby"><a href="#编译安装ruby" class="headerlink" title="编译安装ruby"></a>编译安装ruby</h3><p>首先在一个你喜欢的目录中建立<code>stow</code>文件夹。我是将文件夹建在<code>/usr/local</code>下面了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user@host$ ls /usr/local</span><br><span class="line">bin  etc  games  include  lib  man  sbin  share  src  stow</span><br></pre></td></tr></table></figure></p>
-<p>同时进入<code>stow</code>文件夹下建立一个文件夹<code>ruby</code>。</p>
-<p>下面就可以正常地从源代码编译安装ruby了。</p>
+<p>以上方法都是手动更改路径，其实还有一个更加智能的方法。在CPAN上有一个<strong><code>local::lib</code></strong>模块。使用这个模块可以根据自定义路径，自动管理各种Perl所需要的系统变量和<code>@INC</code>数组。具体安装使用方法可以参考其官方网站<a href="http://search.cpan.org/~haarg/local-lib-2.000019/" target="_blank" rel="external">local::lib</a></p>
 <blockquote>
-<p>其实Ubuntu的包管理中含有ruby，不过这里就出现我上面说的问题了。包管理器中的ruby版本很低，我是要安装Jekyll 3.0的版本，要求ruby必须大于2.0。不得已只能从源代码编译安装。</p>
-</blockquote>
-<p>在做编译配置时，注意选择安装路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/stow/ruby  #就是上面你建立在stow路径下的ruby目录</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
-<p>熟悉的人都知道这其实是将程序安装在自定义路径下。<br>下面查看<code>/usr/local/stow/ruby</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user@host$ ls /usr/local/stow/ </span><br><span class="line">bin  include  lib  share</span><br></pre></td></tr></table></figure></p>
-<p>这里可以看到目录结构跟<code>/usr/local</code>下面是一样的。</p>
-<h3 id="使用stow进行映射"><a href="#使用stow进行映射" class="headerlink" title="使用stow进行映射"></a>使用stow进行映射</h3><p>进入<code>/usr/local/stow/</code>目录下执行<code>sudo stow ruby</code>，stow就会将ruby下的目录以及目录下的文件以对应的方式映射到<code>/usr/local</code>下面，例如<code>ruby/bin</code>目录下存在以下文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x 1 root root     4854  3月  4 11:15 erb</span><br><span class="line">-rwxr-xr-x 1 root root      558  3月  4 11:15 gem</span><br><span class="line">-rwxr-xr-x 1 root root      202  3月  4 11:15 irb</span><br><span class="line">-rwxr-xr-x 1 root root      507  3月  4 14:13 jekyll</span><br><span class="line">-rwxr-xr-x 1 root root      515  3月  4 14:09 kramdown</span><br><span class="line">-rwxr-xr-x 1 root root      507  3月  4 14:09 listen</span><br><span class="line">-rwxr-xr-x 1 root root      499  3月  4 11:15 rake</span><br><span class="line">-rwxr-xr-x 1 root root      950  3月  4 11:15 rdoc</span><br><span class="line">-rwxr-xr-x 1 root root      200  3月  4 11:15 ri</span><br><span class="line">-rwxr-xr-x 1 root root      505  3月  4 14:08 rougify</span><br><span class="line">-rwxr-xr-x 1 root root 15203908  3月  4 11:11 ruby</span><br><span class="line">-rwxr-xr-x 1 root root      519  3月  4 14:08 safe_yaml</span><br><span class="line">-rwxr-xr-x 1 root root      499  3月  4 14:09 sass</span><br><span class="line">-rwxr-xr-x 1 root root      507  3月  4 14:09 sass-convert</span><br><span class="line">-rwxr-xr-x 1 root root      499  3月  4 14:09 scss</span><br></pre></td></tr></table></figure></p>
-<p>那么执行完命令以后，<code>/usr/local/bin</code>下面就会存在上面程序的软连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x 1 root root  460  2月  3 00:06 bundle</span><br><span class="line">-rwxr-xr-x 1 root root  461  2月  3 00:06 bundler</span><br><span class="line">lrwxrwxrwx 1 root root   20  3月  4 11:21 erb -&gt; ../stow/ruby/bin/erb</span><br><span class="line">-rwxr-xr-x 1 root root  212  3月  7 01:38 fab</span><br><span class="line">lrwxrwxrwx 1 root root   20  3月  4 11:21 gem -&gt; ../stow/ruby/bin/gem</span><br><span class="line">lrwxrwxrwx 1 root root   20  3月  4 11:21 irb -&gt; ../stow/ruby/bin/irb</span><br><span class="line">lrwxrwxrwx 1 root root   23  3月  4 14:39 jekyll -&gt; ../stow/ruby/bin/jekyll</span><br><span class="line">lrwxrwxrwx 1 root root   25  3月  4 14:39 kramdown -&gt; ../stow/ruby/bin/kramdown</span><br><span class="line">lrwxrwxrwx 1 root root   23  3月  4 14:39 listen -&gt; ../stow/ruby/bin/listen</span><br><span class="line">-rwxr-xr-x 1 root root 2774  3月  7 01:38 pnuke</span><br><span class="line">-rwxr-xr-x 1 root root 3913  3月  7 01:38 prsync</span><br><span class="line">-rwxr-xr-x 1 root root 3234  3月  7 01:38 pscp</span><br><span class="line">-rwxr-xr-x 1 root root 4026  3月  7 01:38 pslurp</span><br><span class="line">-rwxr-xr-x 1 root root 3850  3月  7 01:38 pssh</span><br><span class="line">-rwxr-xr-x 1 root root  266  3月  7 01:38 pssh-askpass</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 11:21 rake -&gt; ../stow/ruby/bin/rake</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 11:21 rdoc -&gt; ../stow/ruby/bin/rdoc</span><br><span class="line">lrwxrwxrwx 1 root root   19  3月  4 11:21 ri -&gt; ../stow/ruby/bin/ri</span><br><span class="line">lrwxrwxrwx 1 root root   24  3月  4 14:39 rougify -&gt; ../stow/ruby/bin/rougify</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 11:21 ruby -&gt; ../stow/ruby/bin/ruby</span><br><span class="line">lrwxrwxrwx 1 root root   26  3月  4 14:39 safe_yaml -&gt; ../stow/ruby/bin/safe_yaml</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 14:39 sass -&gt; ../stow/ruby/bin/sass</span><br><span class="line">lrwxrwxrwx 1 root root   29  3月  4 14:39 sass-convert -&gt; ../stow/ruby/bin/sass-convert</span><br><span class="line">lrwxrwxrwx 1 root root   21  3月  4 14:39 scss -&gt; ../stow/ruby/bin/scss</span><br></pre></td></tr></table></figure></p>
-<p>这样就相当于新安装的软件也存在于系统默认的环境里了。直接使用即可，很方便。</p>
-<p>当我们删除安装包时就变得简单了，首先使用<code>stow --delete ruby</code>删除<code>/usr/local</code>建好的软连接，然后直接删除<code>stow</code>下的ruby文件夹即可。</p>
-<blockquote>
-<p><strong>注意</strong>：</p>
+<p><strong>参考资源：</strong></p>
 <ul>
-<li>stow默认的配置都会将软连接建立在<code>/usr/local</code>下面，当然我们可以更改，具体更改方法可以参看stow的官方文档</li>
-<li>一旦我们要映射的路径中存在同名的文件，stow程序会报错，有利于我们来进行选择</li>
-</ul>
-</blockquote>
-<p>这就是用stow来管理由源代码编译安装的程序使用方法，正如前面所说，stow也可以用来管理<code>.</code>配置文件。这里便不说明了，可以参看官方文档或者Google。</p>
-<blockquote>
-<p><strong>参考文档</strong>：</p>
-<ul>
-<li><a href="https://www.gnu.org/software/stow/" target="_blank" rel="external">GNU Stow官方文档</a></li>
-<li><a href="http://blog.danieroux.com/2005/08/07/using-gnu-stow-to-manage-source-installs/" target="_blank" rel="external">Using GNU Stow to manage source installs</a></li>
+<li><a href="http://5ydycm.blog.51cto.com/115934/113196" target="_blank" rel="external">CPAN学习</a></li>
+<li><a href="http://michael.thegrebs.com/2014/08/08/taking-cpan-with-you/" target="_blank" rel="external">Taking CPAN With You</a></li>
+<li><a href="http://blog.chinaunix.net/uid-20264899-id-3020559.html" target="_blank" rel="external">altibase perl dbd安装(hp-ux下) </a></li>
+<li><a href="https://metacpan.org/pod/distribution/CPAN-Mini/bin/minicpan" target="_blank" rel="external">minicpan</a></li>
+<li><a href="http://search.cpan.org/~haarg/local-lib-2.000019/" target="_blank" rel="external">local::lib</a></li>
 </ul>
 </blockquote>
 
@@ -359,25 +355,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag">#linux</a>
+            <a href="/tags/Python/" rel="tag">#Python</a>
           
-            <a href="/tags/gnu/" rel="tag">#gnu</a>
-          
-            <a href="/tags/stow/" rel="tag">#stow</a>
-          
-            <a href="/tags/source/" rel="tag">#source</a>
-          
-            <a href="/tags/make/" rel="tag">#make</a>
-          
-            <a href="/tags/make-install/" rel="tag">#make install</a>
-          
-            <a href="/tags/compile/" rel="tag">#compile</a>
-          
-            <a href="/tags/package/" rel="tag">#package</a>
-          
-            <a href="/tags/apt-get/" rel="tag">#apt-get</a>
-          
-            <a href="/tags/yum/" rel="tag">#yum</a>
+            <a href="/tags/Perl/" rel="tag">#Perl</a>
           
         </div>
       
@@ -386,17 +366,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/07/2016-03-07-OpenGL-note-intro/" rel="next" title="OpenGL笔记-初识OpenGL">
-                <i class="fa fa-chevron-left"></i> OpenGL笔记-初识OpenGL
+              <a href="/2016/05/10/2016-05-10-find-grep-xargs-and-pipe/" rel="next" title="对find，xargs，grep和管道的一些深入理解">
+                <i class="fa fa-chevron-left"></i> 对find，xargs，grep和管道的一些深入理解
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/07/2016-03-07-ruby-install-tips/" rel="prev" title="由源代码安装ruby时需要注意的">
-                由源代码安装ruby时需要注意的 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -576,7 +552,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单原理"><span class="nav-number">1.</span> <span class="nav-text">简单原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用stow"><span class="nav-number">2.</span> <span class="nav-text">使用stow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译安装ruby"><span class="nav-number">2.1.</span> <span class="nav-text">编译安装ruby</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用stow进行映射"><span class="nav-number">2.2.</span> <span class="nav-text">使用stow进行映射</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#离线使用包管理工具安装扩展模块"><span class="nav-number">1.</span> <span class="nav-text">离线使用包管理工具安装扩展模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">1.1.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perl"><span class="nav-number">1.2.</span> <span class="nav-text">Perl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将模块安装到非系统权限路径。"><span class="nav-number">2.</span> <span class="nav-text">将模块安装到非系统权限路径。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-1"><span class="nav-number">2.1.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perl-1"><span class="nav-number">2.2.</span> <span class="nav-text">Perl</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -844,9 +820,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'laoshuterry';
-      var disqus_identifier = '2016/03/07/2016-03-07-manage-package-using-stow/';
-      var disqus_title = '利用GNU stow工具管理源代码安装的程序';
-      var disqus_url = 'http://yoursite.com/2016/03/07/2016-03-07-manage-package-using-stow/';
+      var disqus_identifier = '2016/09/27/2016-09-27-python-perl-offline-install/';
+      var disqus_title = '关于在内网服务器上搭建Python和Perl环境的两个问题';
+      var disqus_url = 'http://yoursite.com/2016/09/27/2016-09-27-python-perl-offline-install/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

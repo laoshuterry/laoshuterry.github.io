@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-10T11:25:28.096Z</updated>
+  <updated>2016-09-27T09:50:14.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于在内网服务器上搭建Python和Perl环境的两个问题</title>
+    <link href="http://yoursite.com/2016/09/27/2016-09-27-python-perl-offline-install/"/>
+    <id>http://yoursite.com/2016/09/27/2016-09-27-python-perl-offline-install/</id>
+    <published>2016-09-27T09:45:00.000Z</published>
+    <updated>2016-09-27T09:50:14.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;Python&lt;/code&gt;和&lt;code&gt;Perl&lt;/code&gt;最为强大的高级脚本语言，其中很大一个亮点就是可以实现各种扩展。这两个语言在目前网络上都有大量的扩展模块。我们可以随时使用来简化我们的工作。&lt;/p&gt;
+&lt;p&gt;在开发过程，大家都习惯了两个语言的一些包管理工具，需要什么模块，直接一个命令就搞定了，例如Python的&lt;code&gt;pip&lt;/code&gt;,Perl的&lt;code&gt;cpan&lt;/code&gt;等等。但是在生产环境，或者说正式环境上。我们想安装扩展模块就没这么容易了。在现实环境中，并不像我们做开发测试那样方便通过网络安装模块，一般服务器都是内网隔离的，而且使用的用户都一定的权限设置，这就是说，你无法从网络安装模块，也不能使用系统权限将模块安装到默认路径中。这两个问题从很大程度上让我们再使用&lt;code&gt;pip&lt;/code&gt;或者&lt;code&gt;cpan&lt;/code&gt;这些工具不再那么方便。为了能更好地在正式环境上使用这些工具，我们需要解决两个问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 如何离线使用包管理工具安装扩展模块，不需要使用网络，同时完成依赖包的安装；
+2. 如何将包安装到非系统权限路径
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了解决上面的两个问题，我们来分别介绍两个语言的解决方法。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;离线使用包管理工具安装扩展模块&quot;&gt;&lt;a href=&quot;#离线使用包管理工具安装扩展模块&quot; class=&quot;headerlink&quot; title=&quot;离线使用包管理工具安装扩展模块&quot;&gt;&lt;/a&gt;离线使用包管理工具安装扩展模块&lt;/h2&gt;&lt;h3 id=&quot;Python&quot;&gt;&lt;a href=&quot;#Python&quot; class=&quot;headerlink&quot; title=&quot;Python&quot;&gt;&lt;/a&gt;Python&lt;/h3&gt;&lt;p&gt;&lt;code&gt;pip&lt;/code&gt;，&lt;code&gt;virtualenv&lt;/code&gt;和&lt;code&gt;fabric&lt;/code&gt;号称&lt;strong&gt;Python三大神器&lt;/strong&gt;。这里&lt;code&gt;pip&lt;/code&gt;绝对不是浪得虚名，它的包管理功能是十分强大的，其中一点就是可以离线完成包的安装，包括其自动找到各种依赖包。&lt;/p&gt;
+&lt;p&gt;在没有外网连接的环境上，如果想安装一些自己常用的模块，这些模块还有一大堆依赖包。这时候我们只能把所有的离线安装包都下载下来，一个个按照顺序安装。这肯定不是个好方法。&lt;code&gt;pip&lt;/code&gt;轻松解决了这个问题。&lt;br&gt;假设我们的开发环境是联网的，而且上面的各种扩展包都是完全安装好的，我们便可以利用这一点来制作一个专属自己的扩展包集合。&lt;/p&gt;
+&lt;p&gt;在有外网连接的开发环境上，执行&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pip list &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pip freeze &amp;gt; requirements.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pip install --download path/to/your/package/dir -r requirements.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;pip list&lt;/code&gt;列出当前环境下所有安装好的扩展包，然后使用&lt;code&gt;pip freeze&lt;/code&gt;将当前环境下所有的包信息写到了&lt;code&gt;requirements.txt&lt;/code&gt;文件中。再以此文件为准，将所有的文件内涉及的模块，下载到自定义的目录当中。下载完成后，可以将这个路径转移到正式环境中。&lt;/p&gt;
+&lt;p&gt;在正式环境上执行&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pip install --no-index --find-index=path/to/your/package/dir -r requirements.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这时候&lt;code&gt;pip&lt;/code&gt;便可以根据&lt;code&gt;requirements.txt&lt;/code&gt;文件，从指定文件夹内获取所需要的扩展包，不需要网络就安装到了生产环境下。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt;这一功能绝对算得上是神技能，轻松解决了&lt;code&gt;Python&lt;/code&gt;离线安装的问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt;的版本要保持最新，否则可能出现安装错误的问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Perl&quot;&gt;&lt;a href=&quot;#Perl&quot; class=&quot;headerlink&quot; title=&quot;Perl&quot;&gt;&lt;/a&gt;Perl&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Perl&lt;/code&gt;在离线安装这点上显得“笨重”些，目前本人没有找到Perl上像&lt;code&gt;pip&lt;/code&gt;那样，可以仅离线下载自己所需的扩展包，&lt;code&gt;Perl&lt;/code&gt;目前能做的就是对&lt;strong&gt;CPAN&lt;/strong&gt;做一个迷你的镜像备份。也就是把CPAN上的主要版本都DOWN下来。形成一个本地的，小巧的CPAN，这样来实现离线安装。&lt;/p&gt;
+&lt;p&gt;虽然说这也是一个方法，但是下载的镜像需要占用一定的空间，有3个G之多。传输和存储多多少少都有些不方便。&lt;/p&gt;
+&lt;p&gt;要实现此功能的工具叫做&lt;code&gt;minicpan&lt;/code&gt;。我们现在自己的开发环境上，例如个人电脑的虚拟机上保持网络通畅，利用&lt;code&gt;cpan&lt;/code&gt;或者&lt;code&gt;cpanm&lt;/code&gt;先安装&lt;code&gt;CPAN::Mini&lt;/code&gt;模块，然后建立一个&lt;code&gt;minicpan&lt;/code&gt;所要用到的配置文件，默认为&lt;code&gt;~/.minicpan&lt;/code&gt;。在里面写下如下内容&lt;/p&gt;
+&lt;figure class=&quot;highlight perl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;local&lt;/span&gt;: ~&lt;span class=&quot;regexp&quot;&gt;/LocalCPAN/minicpan&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;remote: http:&lt;span class=&quot;regexp&quot;&gt;//cpan&lt;/span&gt;.hexten.net/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;local&lt;/code&gt;就是要下载镜像的本地路径。&lt;code&gt;remote&lt;/code&gt;是CPAN的远端镜像网址，我们可以通过这个&lt;a href=&quot;http://mirrors.cpan.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;网站&lt;/a&gt;选择一个适合自己网络情况的地址。&lt;/p&gt;
+&lt;p&gt;接下来直接执行命令&lt;code&gt;minicpan&lt;/code&gt;，就开始下载迷你镜像了。慢慢等待吧~~&lt;/p&gt;
+&lt;p&gt;当这个下载完成后，将&lt;code&gt;~/LocalCPAN/minicpan&lt;/code&gt;移动到没有互联网连接的机器上。打开&lt;code&gt;cpan&lt;/code&gt;，依次执行下列语句&lt;/p&gt;
+&lt;figure class=&quot;highlight perl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cpan[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&amp;gt; o conf urllist &lt;span class=&quot;keyword&quot;&gt;push&lt;/span&gt; file:&lt;span class=&quot;regexp&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;regexp&quot;&gt;/home/user&lt;/span&gt;&lt;span class=&quot;regexp&quot;&gt;/LocalCPAN/minicpan&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cpan[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;]&amp;gt; o conf urllist &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;urllist &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; [file:&lt;span class=&quot;regexp&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;regexp&quot;&gt;/home/user&lt;/span&gt;&lt;span class=&quot;regexp&quot;&gt;/LocalCPAN/minicpan&lt;/span&gt;] &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cpan[&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;]&amp;gt; o conf commit&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这时候，&lt;code&gt;cpan&lt;/code&gt;工具的默认下载源便成了本地的路径了。这时再用&lt;code&gt;cpan&lt;/code&gt;安装自己所需的扩展包，就可以无须外网连接，离线完成安装了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意下载的过程会很漫长。而且有可能因为网络原因导致程序退出。我们要在原来的基础上继续下载时，需要使用&lt;code&gt;minicpan -f&lt;/code&gt;命令来继续执行。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;将模块安装到非系统权限路径。&quot;&gt;&lt;a href=&quot;#将模块安装到非系统权限路径。&quot; class=&quot;headerlink&quot; title=&quot;将模块安装到非系统权限路径。&quot;&gt;&lt;/a&gt;将模块安装到非系统权限路径。&lt;/h2&gt;&lt;h3 id=&quot;Python-1&quot;&gt;&lt;a href=&quot;#Python-1&quot; class=&quot;headerlink&quot; title=&quot;Python&quot;&gt;&lt;/a&gt;Python&lt;/h3&gt;&lt;p&gt;将Python的扩展包安装到非系统权限路径中其实很简单，只需在&lt;code&gt;pip&lt;/code&gt;或者源代码安装&lt;code&gt;python setup.py install&lt;/code&gt;命令时加上&lt;code&gt;--user&lt;/code&gt;参数，那么Python会自动将模块安装到&lt;code&gt;~/.local&lt;/code&gt;路径下。并将这个路径加入到Python模块的搜索列表。可以说是很方便。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这种方法很省心，但是扩展包却要占用home空间。本人目前没有找到如何将扩展包安装到其他自定义的目录中，并将此目录加入搜索路径。这个以后再慢慢研究。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Perl-1&quot;&gt;&lt;a href=&quot;#Perl-1&quot; class=&quot;headerlink&quot; title=&quot;Perl&quot;&gt;&lt;/a&gt;Perl&lt;/h3&gt;&lt;p&gt;在源代码安装时，当用户没有系统权限，可以使用参数将模块安装到自定义的目录。如果使用的是&lt;strong&gt;ExtUtils::MakeMaker&lt;/strong&gt;&lt;br&gt;方式，使用参数&lt;code&gt;INSTALL_BASE=&lt;/code&gt;。如果使用的是&lt;strong&gt;Module::Build&lt;/strong&gt;，则可以使用参数&lt;code&gt;--install_base=&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当我们使用&lt;code&gt;cpan&lt;/code&gt;安装扩展包时，通过定义cpan配置文件里这两个路径，也可以将扩展包安装到自定义的目录。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; cpan: o conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; makepl_arg         [INSTALL_BASE=/path/to/build]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; mbuild_arg         [--install_base /path/to/build]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这里有个问题，我们只是将扩展包安装到了自定义的目录中，但是Perl默认的&lt;code&gt;@INC&lt;/code&gt;数组中的找不到这个路径的，更不用说路径下的扩展包。这一步我们要做的就是让Perl能够找到自定义的路径，我们可以使用以下三种方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;添加系统环境变量&lt;strong&gt;&lt;code&gt;PERL5LIB&lt;/code&gt;&lt;/strong&gt;，指向自定义目录，即可将自定义的路径加入到&lt;code&gt;@INC&lt;/code&gt;中。&lt;/li&gt;
+&lt;li&gt;在Perl源码中使用&lt;code&gt;usr lib &amp;#39;path/to/perl/module&amp;#39;&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在启动perl命令时，使用&lt;code&gt;-l&lt;/code&gt;参数。例如&lt;code&gt;perl -l path/to/perl/module test.pl&lt;/code&gt;。&lt;strong&gt;此方式一般用于测试新模块&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上方法都是手动更改路径，其实还有一个更加智能的方法。在CPAN上有一个&lt;strong&gt;&lt;code&gt;local::lib&lt;/code&gt;&lt;/strong&gt;模块。使用这个模块可以根据自定义路径，自动管理各种Perl所需要的系统变量和&lt;code&gt;@INC&lt;/code&gt;数组。具体安装使用方法可以参考其官方网站&lt;a href=&quot;http://search.cpan.org/~haarg/local-lib-2.000019/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;local::lib&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;参考资源：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://5ydycm.blog.51cto.com/115934/113196&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CPAN学习&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://michael.thegrebs.com/2014/08/08/taking-cpan-with-you/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Taking CPAN With You&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-20264899-id-3020559.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;altibase perl dbd安装(hp-ux下) &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://metacpan.org/pod/distribution/CPAN-Mini/bin/minicpan&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;minicpan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://search.cpan.org/~haarg/local-lib-2.000019/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;local::lib&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;Python&lt;/code&gt;和&lt;code&gt;Perl&lt;/code&gt;最为强大的高级脚本语言，其中很大一个亮点就是可以实现各种扩展。这两个语言在目前网络上都有大量的扩展模块。我们可以随时使用来简化我们的工作。&lt;/p&gt;
+&lt;p&gt;在开发过程，大家都习惯了两个语言的一些包管理工具，需要什么模块，直接一个命令就搞定了，例如Python的&lt;code&gt;pip&lt;/code&gt;,Perl的&lt;code&gt;cpan&lt;/code&gt;等等。但是在生产环境，或者说正式环境上。我们想安装扩展模块就没这么容易了。在现实环境中，并不像我们做开发测试那样方便通过网络安装模块，一般服务器都是内网隔离的，而且使用的用户都一定的权限设置，这就是说，你无法从网络安装模块，也不能使用系统权限将模块安装到默认路径中。这两个问题从很大程度上让我们再使用&lt;code&gt;pip&lt;/code&gt;或者&lt;code&gt;cpan&lt;/code&gt;这些工具不再那么方便。为了能更好地在正式环境上使用这些工具，我们需要解决两个问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 如何离线使用包管理工具安装扩展模块，不需要使用网络，同时完成依赖包的安装；
+2. 如何将包安装到非系统权限路径
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了解决上面的两个问题，我们来分别介绍两个语言的解决方法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+      <category term="Perl" scheme="http://yoursite.com/tags/Perl/"/>
+    
+  </entry>
   
   <entry>
     <title>对find，xargs，grep和管道的一些深入理解</title>
