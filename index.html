@@ -226,6 +226,143 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/08/2016-10-08-find-repeat-file/" itemprop="url">
+                  利用find命令筛选重复文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-08T10:50:00+08:00" content="2016-10-08">
+              2016-10-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/08/2016-10-08-find-repeat-file/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/08/2016-10-08-find-repeat-file/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天遇到了一个问题，在同步百度云网盘的照片时，出现了混乱。我在本地删了很多照片，同时也给已存的照片改了名，按理说同步程序会把本地结果同步到云端。但是不知道怎么回事，程序又把云端的照片下载到本地了。这就使得目录下有了很多不同名的重复文件。而且数量很多，大概两千多张照片，这种情况下手动排除重复照片是很麻烦的一件事。想到自己的windows上装了<code>CGWIN</code>，所以尝试写了一个Shell命令来解决问题。没想到还成功了。</p>
+<p>命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ find -not -empty -type f -printf <span class="string">"%s\n"</span> |sort -rn|uniq <span class="_">-d</span>|xargs -I&#123;&#125; -n1 find -type f -size &#123;&#125;c -print &gt; repeat.txt</span><br><span class="line">$ mkdir REPEAT</span><br><span class="line">$ cat repeat.txt|awk <span class="string">'&#123;if(NR%2==0) print&#125;'</span>|xargs -I&#123;&#125; mv &#123;&#125; REPEAT</span><br></pre></td></tr></table></figure>
+<p>这里一个个讲解下：</p>
+<ul>
+<li><code>find -not -empty -type f -printf &quot;%s\n&quot;</code>是用<code>find</code>命令找出不为空的，类型为文件，将这些文件的大小按行打印出来。<ul>
+<li><code>-printf</code>是<code>find</code>命令的格式化选项，都过这个选项可以打印出各种想要的东西。其中<code>%s</code>就是打印文件的大小.可以通过<code>man find</code>去查看详细内容。</li>
+</ul>
+</li>
+<li>打印出所有文件的大小后，根据文件大小的数值进行降序排列后，然后使用<code>uniq -d</code>筛选出重复的文件大小数据。</li>
+<li><code>xargs -I{} -n1 find -type f -size {}c -print</code>是反向打印出文件名。我们通过前面的命令能够知道重复的文件大小数值。通过此命令可以通过文件大小的值，把重复的文件名筛选出来。<ul>
+<li><code>-size {}c</code>后面的<code>c</code>指的是按<code>bytes</code>单位。</li>
+</ul>
+</li>
+<li><code>cat repeat.txt|awk &#39;{if(NR%2==0) print}&#39;|xargs -I{} mv {} REPEAT</code>。将重复的文件名放入到一个文本中。通过筛选文本中的偶数行，就可以获取出那些重复的文件名，然后将其移动到新的文件夹中。</li>
+</ul>
+<blockquote>
+<p><strong>参考链接：</strong></p>
+<ul>
+<li><a href="http://blog.csdn.net/zixiaomuwu/article/details/50878383" target="_blank" rel="external">利用Linux查找重复文件（shell脚本）</a></li>
+<li><a href="http://blog.csdn.net/hongchangfirst/article/details/25110611" target="_blank" rel="external">awk按照奇数行和偶数行进行处理</a></li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/27/2016-09-27-python-perl-offline-install/" itemprop="url">
                   关于在内网服务器上搭建Python和Perl环境的两个问题
                 </a>
@@ -1293,123 +1430,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/12/09/2014-12-09-texde-da-jia-zu/" itemprop="url">
-                  TeX的家族：LaTeX， pdfTeX， XeTeX， LuaTeX和ConTeXt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-12-09T19:41:49+08:00" content="2014-12-09">
-              2014-12-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/TeX/" itemprop="url" rel="index">
-                    <span itemprop="name">TeX</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/12/09/2014-12-09-texde-da-jia-zu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/09/2014-12-09-texde-da-jia-zu/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近这段时间一直在研究LaTeX，但是一直被各种各样的词汇搞到晕头转向，后来找到了两篇文章，文章中对于各种名词的解释比较到位，并从TeX的发展讲解了整个历史，其中一个作者更是绘制出了整个家族树，对于理解TeX的历史很有帮助，奈何两篇文章都是英文，这么好的文章应该分享给国内的朋友们，同时也为了回忆一下自己之前学的英语，这里翻译了其中的一篇文章，如果有错误，还望大家原谅<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/12/09/2014-12-09-texde-da-jia-zu/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1456,7 +1476,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1473,7 +1493,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

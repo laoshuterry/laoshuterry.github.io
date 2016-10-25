@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/10/08/2016-10-08-find-repeat-file/</loc>
+    
+    <lastmod>2016-10-25T03:17:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/09/27/2016-09-27-python-perl-offline-install/</loc>
     
     <lastmod>2016-09-27T09:50:14.000Z</lastmod>
@@ -51,14 +58,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2014/12/16/2014-12-16-ubuntu-9-dot-10shang-jian-li-arm-linuxjiao-cha-bian-yi-huan-jing/</loc>
-    
-    <lastmod>2016-03-08T03:58:27.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/</loc>
+    <loc>http://yoursite.com/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/</loc>
     
     <lastmod>2016-03-08T03:58:27.688Z</lastmod>
     
@@ -72,6 +72,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2014/08/18/2014-08-18-cyu-yan-li-shi-yu-biao-zhun/</loc>
+    
+    <lastmod>2016-03-08T03:58:27.688Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2014/12/15/2014-12-15-shi-yong-wang-pan-jian-zao-gitsi-you-cang-ku/</loc>
     
     <lastmod>2016-03-08T03:58:27.688Z</lastmod>
@@ -79,14 +86,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/</loc>
+    <loc>http://yoursite.com/2014/12/16/2014-12-16-ubuntu-9-dot-10shang-jian-li-arm-linuxjiao-cha-bian-yi-huan-jing/</loc>
     
     <lastmod>2016-03-08T03:58:27.688Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2014/08/20/2014-08-20-wei-ni-de-octopressbo-ke-tian-jia-seoshe-zhi/</loc>
+    <loc>http://yoursite.com/2014/08/19/2014-08-19-octopressde-hou-xu-pei-zhi/</loc>
     
     <lastmod>2016-03-08T03:58:27.688Z</lastmod>
     

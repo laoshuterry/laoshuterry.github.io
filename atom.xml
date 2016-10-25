@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-27T09:50:14.000Z</updated>
+  <updated>2016-10-25T03:17:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用find命令筛选重复文件</title>
+    <link href="http://yoursite.com/2016/10/08/2016-10-08-find-repeat-file/"/>
+    <id>http://yoursite.com/2016/10/08/2016-10-08-find-repeat-file/</id>
+    <published>2016-10-08T02:50:00.000Z</published>
+    <updated>2016-10-25T03:17:05.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天遇到了一个问题，在同步百度云网盘的照片时，出现了混乱。我在本地删了很多照片，同时也给已存的照片改了名，按理说同步程序会把本地结果同步到云端。但是不知道怎么回事，程序又把云端的照片下载到本地了。这就使得目录下有了很多不同名的重复文件。而且数量很多，大概两千多张照片，这种情况下手动排除重复照片是很麻烦的一件事。想到自己的windows上装了&lt;code&gt;CGWIN&lt;/code&gt;，所以尝试写了一个Shell命令来解决问题。没想到还成功了。&lt;/p&gt;
+&lt;p&gt;命令如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ find -not -empty -type f -printf &lt;span class=&quot;string&quot;&gt;&quot;%s\n&quot;&lt;/span&gt; |sort -rn|uniq &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt;|xargs -I&amp;#123;&amp;#125; -n1 find -type f -size &amp;#123;&amp;#125;c -print &amp;gt; repeat.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ mkdir REPEAT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat repeat.txt|awk &lt;span class=&quot;string&quot;&gt;&#39;&amp;#123;if(NR%2==0) print&amp;#125;&#39;&lt;/span&gt;|xargs -I&amp;#123;&amp;#125; mv &amp;#123;&amp;#125; REPEAT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里一个个讲解下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;find -not -empty -type f -printf &amp;quot;%s\n&amp;quot;&lt;/code&gt;是用&lt;code&gt;find&lt;/code&gt;命令找出不为空的，类型为文件，将这些文件的大小按行打印出来。&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-printf&lt;/code&gt;是&lt;code&gt;find&lt;/code&gt;命令的格式化选项，都过这个选项可以打印出各种想要的东西。其中&lt;code&gt;%s&lt;/code&gt;就是打印文件的大小.可以通过&lt;code&gt;man find&lt;/code&gt;去查看详细内容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;打印出所有文件的大小后，根据文件大小的数值进行降序排列后，然后使用&lt;code&gt;uniq -d&lt;/code&gt;筛选出重复的文件大小数据。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;xargs -I{} -n1 find -type f -size {}c -print&lt;/code&gt;是反向打印出文件名。我们通过前面的命令能够知道重复的文件大小数值。通过此命令可以通过文件大小的值，把重复的文件名筛选出来。&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-size {}c&lt;/code&gt;后面的&lt;code&gt;c&lt;/code&gt;指的是按&lt;code&gt;bytes&lt;/code&gt;单位。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cat repeat.txt|awk &amp;#39;{if(NR%2==0) print}&amp;#39;|xargs -I{} mv {} REPEAT&lt;/code&gt;。将重复的文件名放入到一个文本中。通过筛选文本中的偶数行，就可以获取出那些重复的文件名，然后将其移动到新的文件夹中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;参考链接：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/zixiaomuwu/article/details/50878383&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;利用Linux查找重复文件（shell脚本）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/hongchangfirst/article/details/25110611&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;awk按照奇数行和偶数行进行处理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天遇到了一个问题，在同步百度云网盘的照片时，出现了混乱。我在本地删了很多照片，同时也给已存的照片改了名，按理说同步程序会把本地结果同步到云端。但是不知道怎么回事，程序又把云端的照片下载到本地了。这就使得目录下有了很多不同名的重复文件。而且数量很多，大概两千多张照片，这种情
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="command" scheme="http://yoursite.com/tags/command/"/>
+    
+      <category term="find" scheme="http://yoursite.com/tags/find/"/>
+    
+      <category term="xargs" scheme="http://yoursite.com/tags/xargs/"/>
+    
+      <category term="grep" scheme="http://yoursite.com/tags/grep/"/>
+    
+      <category term="unzip" scheme="http://yoursite.com/tags/unzip/"/>
+    
+      <category term="bat" scheme="http://yoursite.com/tags/bat/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="cgwin" scheme="http://yoursite.com/tags/cgwin/"/>
+    
+      <category term="awk" scheme="http://yoursite.com/tags/awk/"/>
+    
+  </entry>
   
   <entry>
     <title>关于在内网服务器上搭建Python和Perl环境的两个问题</title>

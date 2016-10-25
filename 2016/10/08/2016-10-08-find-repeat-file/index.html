@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux, gnu, vps, root, passwd, admin, PS1, bashrc, 密码, 根目录, 用户名" />
+  <meta name="keywords" content="linux,command,find,xargs,grep,unzip,bat,windows,cgwin,批量移动,linux高效操作，linux命令,管道,pipe,repeat,重复文件" />
 
 
 
@@ -59,30 +59,16 @@
 
 
 
-<meta name="description" content="更改ROOT密码使用VPS分配的root密码，以root身份登陆主机，然后执行1passwd root
-依照提示即可更改主机root密码。
-增加管理员权限的用户直接使用root用户操作主机是非常不安全的，所以要建立其他的管理员用户。在Ubuntu中，可以使用1adduser admin
-或者1useradd admin
-虽然两个命令都可以建立新用户，但是优先使用adduser而不是useradd。">
+<meta name="description" content="今天遇到了一个问题，在同步百度云网盘的照片时，出现了混乱。我在本地删了很多照片，同时也给已存的照片改了名，按理说同步程序会把本地结果同步到云端。但是不知道怎么回事，程序又把云端的照片下载到本地了。这就使得目录下有了很多不同名的重复文件。而且数量很多，大概两千多张照片，这种情况下手动排除重复照片是很麻烦的一件事。想到自己的windows上装了CGWIN，所以尝试写了一个Shell命令来解决问题。没想">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VPS刚建立所需要做的操作">
-<meta property="og:url" content="http://yoursite.com/2016/03/14/2016-03-14-vps-init/index.html">
+<meta property="og:title" content="利用find命令筛选重复文件">
+<meta property="og:url" content="http://yoursite.com/2016/10/08/2016-10-08-find-repeat-file/index.html">
 <meta property="og:site_name" content="I'm Terry">
-<meta property="og:description" content="更改ROOT密码使用VPS分配的root密码，以root身份登陆主机，然后执行1passwd root
-依照提示即可更改主机root密码。
-增加管理员权限的用户直接使用root用户操作主机是非常不安全的，所以要建立其他的管理员用户。在Ubuntu中，可以使用1adduser admin
-或者1useradd admin
-虽然两个命令都可以建立新用户，但是优先使用adduser而不是useradd。">
-<meta property="og:image" content="http://yoursite.com/uploads/bashrc.jpg">
-<meta property="og:updated_time" content="2016-03-14T09:40:41.259Z">
+<meta property="og:description" content="今天遇到了一个问题，在同步百度云网盘的照片时，出现了混乱。我在本地删了很多照片，同时也给已存的照片改了名，按理说同步程序会把本地结果同步到云端。但是不知道怎么回事，程序又把云端的照片下载到本地了。这就使得目录下有了很多不同名的重复文件。而且数量很多，大概两千多张照片，这种情况下手动排除重复照片是很麻烦的一件事。想到自己的windows上装了CGWIN，所以尝试写了一个Shell命令来解决问题。没想">
+<meta property="og:updated_time" content="2016-10-25T03:17:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VPS刚建立所需要做的操作">
-<meta name="twitter:description" content="更改ROOT密码使用VPS分配的root密码，以root身份登陆主机，然后执行1passwd root
-依照提示即可更改主机root密码。
-增加管理员权限的用户直接使用root用户操作主机是非常不安全的，所以要建立其他的管理员用户。在Ubuntu中，可以使用1adduser admin
-或者1useradd admin
-虽然两个命令都可以建立新用户，但是优先使用adduser而不是useradd。">
-<meta name="twitter:image" content="http://yoursite.com/uploads/bashrc.jpg">
+<meta name="twitter:title" content="利用find命令筛选重复文件">
+<meta name="twitter:description" content="今天遇到了一个问题，在同步百度云网盘的照片时，出现了混乱。我在本地删了很多照片，同时也给已存的照片改了名，按理说同步程序会把本地结果同步到云端。但是不知道怎么回事，程序又把云端的照片下载到本地了。这就使得目录下有了很多不同名的重复文件。而且数量很多，大概两千多张照片，这种情况下手动排除重复照片是很麻烦的一件事。想到自己的windows上装了CGWIN，所以尝试写了一个Shell命令来解决问题。没想">
 
 
 
@@ -100,7 +86,7 @@
   };
 </script>
 
-  <title> VPS刚建立所需要做的操作 | I'm Terry </title>
+  <title> 利用find命令筛选重复文件 | I'm Terry </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -232,7 +218,7 @@
             
             
               
-                VPS刚建立所需要做的操作
+                利用find命令筛选重复文件
               
             
           </h1>
@@ -244,8 +230,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-14T17:20:15+08:00" content="2016-03-14">
-              2016-03-14
+            <time itemprop="dateCreated" datetime="2016-10-08T10:50:00+08:00" content="2016-10-08">
+              2016-10-08
             </time>
           </span>
 
@@ -274,8 +260,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/14/2016-03-14-vps-init/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/14/2016-03-14-vps-init/" itemprop="commentsCount"></span>
+                <a href="/2016/10/08/2016-10-08-find-repeat-file/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/08/2016-10-08-find-repeat-file/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -297,18 +283,29 @@
       
 
       
-        <h2 id="更改ROOT密码"><a href="#更改ROOT密码" class="headerlink" title="更改ROOT密码"></a>更改ROOT密码</h2><p>使用VPS分配的root密码，以root身份登陆主机，然后执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd root</span><br></pre></td></tr></table></figure></p>
-<p>依照提示即可更改主机root密码。</p>
-<h2 id="增加管理员权限的用户"><a href="#增加管理员权限的用户" class="headerlink" title="增加管理员权限的用户"></a>增加管理员权限的用户</h2><p>直接使用root用户操作主机是非常不安全的，所以要建立其他的管理员用户。在<strong>Ubuntu</strong>中，可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser admin</span><br></pre></td></tr></table></figure></p>
-<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd admin</span><br></pre></td></tr></table></figure></p>
-<p>虽然两个命令都可以建立新用户，但是优先使用<code>adduser</code>而不是<code>useradd</code>。<code>adduser</code>不但会建立新用户，还会建立与<code>admin</code>同名的组，还有<strong>/home</strong>下的同名目录，而<code>useradd</code>只是简单的建立了一个用户。</p>
-<h2 id="给新增用户添加管理员权限"><a href="#给新增用户添加管理员权限" class="headerlink" title="给新增用户添加管理员权限"></a>给新增用户添加管理员权限</h2><p>新增用户后，该用户是没有管理员权限的，需要root用户为其分配。打开文件<code>/etc/sudoers</code>，找到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root ALL=(ALL) ALL</span><br></pre></td></tr></table></figure></p>
-<p>在下面新添加一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin ALL=(ALL) ALL</span><br></pre></td></tr></table></figure></p>
-<p>上面的<code>admin</code>就是新建用户名。</p>
-<h2 id="更改PS1变量"><a href="#更改PS1变量" class="headerlink" title="更改PS1变量"></a>更改PS1变量</h2><p>PS1变量控制着Linux中<strong>命令提示符</strong>的显示格式，我们可以自定义命令提示符的显示格式。</p>
-<h3 id="PS1变量中各种特殊符号所代表的意义"><a href="#PS1变量中各种特殊符号所代表的意义" class="headerlink" title="PS1变量中各种特殊符号所代表的意义"></a>PS1变量中各种特殊符号所代表的意义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\d ：代表日期，格式为weekday month date，例如：&quot;Mon Aug 1&quot;    </span><br><span class="line">\H ：完整的主机名称。例如：我的机器名称为：fc4.linux，则这个名称就是fc4.linux   </span><br><span class="line">\h ：仅取主机的第一个名字，如上例，则为fc4，.linux则被省略   </span><br><span class="line">\t ：显示时间为24小时格式，如：HH：MM：SS   </span><br><span class="line">\T ：显示时间为12小时格式   </span><br><span class="line">\A ：显示时间为24小时格式：HH：MM   </span><br><span class="line">\u ：当前用户的账号名称   </span><br><span class="line">\v ：BASH的版本信息    </span><br><span class="line">\w ：完整的工作目录名称。家目录会以 ~代替    </span><br><span class="line">\W ：利用basename取得工作目录名称，所以只会列出最后一个目录   </span><br><span class="line">\# ：下达的第几个命令    </span><br><span class="line">\$ ：提示字符，如果是root时，提示符为：# ，普通用户则为：$</span><br></pre></td></tr></table></figure>
-<h3 id="Linux中命令行颜色的配置"><a href="#Linux中命令行颜色的配置" class="headerlink" title="Linux中命令行颜色的配置"></a>Linux中命令行颜色的配置</h3><p>提示符颜色的格式为：<code>\e[字体样式;字体颜色;背景颜色m</code><br>提示符颜色结束的格式为：<code>\e[0m</code><br>字体样式，字体颜色，背景颜色三者中间使用英语半角的分号隔开，三者都是数字代码。可以使用<code>echo -e &quot;\e[44;37;5m This is the Test LINE \e[0m&quot;</code>来查看效果。</p>
-<h3 id="改变PS1变量工具"><a href="#改变PS1变量工具" class="headerlink" title="改变PS1变量工具"></a>改变PS1变量工具</h3><p>其实PS1的设置命令很繁琐，设置出一个好看实用的PS1命令会很复杂，这里提供一个网站<a href="http://bashrcgenerator.com/" target="_blank" rel="external">Bashrc Generator</a>。里面可以通过拖拽的方式组合出自己想要的格式，之后直接生成PS1变量配置。<br><img src="/uploads/bashrc.jpg"></p>
+        <p>今天遇到了一个问题，在同步百度云网盘的照片时，出现了混乱。我在本地删了很多照片，同时也给已存的照片改了名，按理说同步程序会把本地结果同步到云端。但是不知道怎么回事，程序又把云端的照片下载到本地了。这就使得目录下有了很多不同名的重复文件。而且数量很多，大概两千多张照片，这种情况下手动排除重复照片是很麻烦的一件事。想到自己的windows上装了<code>CGWIN</code>，所以尝试写了一个Shell命令来解决问题。没想到还成功了。</p>
+<p>命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ find -not -empty -type f -printf <span class="string">"%s\n"</span> |sort -rn|uniq <span class="_">-d</span>|xargs -I&#123;&#125; -n1 find -type f -size &#123;&#125;c -print &gt; repeat.txt</span><br><span class="line">$ mkdir REPEAT</span><br><span class="line">$ cat repeat.txt|awk <span class="string">'&#123;if(NR%2==0) print&#125;'</span>|xargs -I&#123;&#125; mv &#123;&#125; REPEAT</span><br></pre></td></tr></table></figure>
+<p>这里一个个讲解下：</p>
+<ul>
+<li><code>find -not -empty -type f -printf &quot;%s\n&quot;</code>是用<code>find</code>命令找出不为空的，类型为文件，将这些文件的大小按行打印出来。<ul>
+<li><code>-printf</code>是<code>find</code>命令的格式化选项，都过这个选项可以打印出各种想要的东西。其中<code>%s</code>就是打印文件的大小.可以通过<code>man find</code>去查看详细内容。</li>
+</ul>
+</li>
+<li>打印出所有文件的大小后，根据文件大小的数值进行降序排列后，然后使用<code>uniq -d</code>筛选出重复的文件大小数据。</li>
+<li><code>xargs -I{} -n1 find -type f -size {}c -print</code>是反向打印出文件名。我们通过前面的命令能够知道重复的文件大小数值。通过此命令可以通过文件大小的值，把重复的文件名筛选出来。<ul>
+<li><code>-size {}c</code>后面的<code>c</code>指的是按<code>bytes</code>单位。</li>
+</ul>
+</li>
+<li><code>cat repeat.txt|awk &#39;{if(NR%2==0) print}&#39;|xargs -I{} mv {} REPEAT</code>。将重复的文件名放入到一个文本中。通过筛选文本中的偶数行，就可以获取出那些重复的文件名，然后将其移动到新的文件夹中。</li>
+</ul>
+<blockquote>
+<p><strong>参考链接：</strong></p>
+<ul>
+<li><a href="http://blog.csdn.net/zixiaomuwu/article/details/50878383" target="_blank" rel="external">利用Linux查找重复文件（shell脚本）</a></li>
+<li><a href="http://blog.csdn.net/hongchangfirst/article/details/25110611" target="_blank" rel="external">awk按照奇数行和偶数行进行处理</a></li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -325,19 +322,23 @@
           
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/gnu/" rel="tag">#gnu</a>
+            <a href="/tags/command/" rel="tag">#command</a>
           
-            <a href="/tags/vps/" rel="tag">#vps</a>
+            <a href="/tags/find/" rel="tag">#find</a>
           
-            <a href="/tags/root/" rel="tag">#root</a>
+            <a href="/tags/xargs/" rel="tag">#xargs</a>
           
-            <a href="/tags/passwd/" rel="tag">#passwd</a>
+            <a href="/tags/grep/" rel="tag">#grep</a>
           
-            <a href="/tags/admin/" rel="tag">#admin</a>
+            <a href="/tags/unzip/" rel="tag">#unzip</a>
           
-            <a href="/tags/PS1/" rel="tag">#PS1</a>
+            <a href="/tags/bat/" rel="tag">#bat</a>
           
-            <a href="/tags/bashrc/" rel="tag">#bashrc</a>
+            <a href="/tags/windows/" rel="tag">#windows</a>
+          
+            <a href="/tags/cgwin/" rel="tag">#cgwin</a>
+          
+            <a href="/tags/awk/" rel="tag">#awk</a>
           
         </div>
       
@@ -346,17 +347,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/07/2016-03-07-ruby-install-tips/" rel="next" title="由源代码安装ruby时需要注意的">
-                <i class="fa fa-chevron-left"></i> 由源代码安装ruby时需要注意的
+              <a href="/2016/09/27/2016-09-27-python-perl-offline-install/" rel="next" title="关于在内网服务器上搭建Python和Perl环境的两个问题">
+                <i class="fa fa-chevron-left"></i> 关于在内网服务器上搭建Python和Perl环境的两个问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/09/2016-05-09-unzip-bat/" rel="prev" title="如何使用find和xargs完成高效的操作">
-                如何使用find和xargs完成高效的操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -536,7 +533,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#更改ROOT密码"><span class="nav-number">1.</span> <span class="nav-text">更改ROOT密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加管理员权限的用户"><span class="nav-number">2.</span> <span class="nav-text">增加管理员权限的用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给新增用户添加管理员权限"><span class="nav-number">3.</span> <span class="nav-text">给新增用户添加管理员权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改PS1变量"><span class="nav-number">4.</span> <span class="nav-text">更改PS1变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PS1变量中各种特殊符号所代表的意义"><span class="nav-number">4.1.</span> <span class="nav-text">PS1变量中各种特殊符号所代表的意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux中命令行颜色的配置"><span class="nav-number">4.2.</span> <span class="nav-text">Linux中命令行颜色的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变PS1变量工具"><span class="nav-number">4.3.</span> <span class="nav-text">改变PS1变量工具</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -804,9 +801,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'laoshuterry';
-      var disqus_identifier = '2016/03/14/2016-03-14-vps-init/';
-      var disqus_title = 'VPS刚建立所需要做的操作';
-      var disqus_url = 'http://yoursite.com/2016/03/14/2016-03-14-vps-init/';
+      var disqus_identifier = '2016/10/08/2016-10-08-find-repeat-file/';
+      var disqus_title = '利用find命令筛选重复文件';
+      var disqus_url = 'http://yoursite.com/2016/10/08/2016-10-08-find-repeat-file/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
